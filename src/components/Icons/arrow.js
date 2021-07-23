@@ -7,10 +7,10 @@ max-width: 2.5em;
 padding-right: 1em;
 `
 
-const arrow = () => {
+const Arrow = () => {
   return (
     <ArrowImg src={arrowIcon}/>
   )
 }
 
-export default arrow
+export default Arrow

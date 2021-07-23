@@ -65,6 +65,8 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    'gatsby-transformer-remark',
+    'gatsby-plugin-theme-ui',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
