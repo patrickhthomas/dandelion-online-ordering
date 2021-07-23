@@ -16,7 +16,7 @@ module.exports = {
         slug: '/',
       },
       {
-        name: 'Menu',
+        name: 'Order Online',
         slug: '/menuV2/',
       },
       {

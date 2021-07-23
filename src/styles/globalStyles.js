@@ -185,7 +185,6 @@ export const globalStyles = css`
   select {
     font-family: inherit;
     font-size: inherit;
-    background: none;
     border: none;
     appearance: none;
     border-radius: 0;

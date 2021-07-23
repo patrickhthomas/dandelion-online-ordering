@@ -30,7 +30,7 @@ const IndexPage = ({ data, pageContext }) => {
   const tagline = data.contentfulHero.tagline.tagline
   const blurb = data.contentfulHero.blurb.blurb
   const alt = data.contentfulHero.heroImage.description
-const heroImageV2 = data.contentfulGallery.images[0]
+const heroImageV2 = data.contentfulHeroImage.image
 
     const {
     cityStateZip,
@@ -51,7 +51,6 @@ const heroImageV2 = data.contentfulGallery.images[0]
   return (
     <Layout hasHero>
       <SEO title="Home" />
-      <div sx={{ marginTop: 5 }}></div>
       <Container>
         <Hero
           title={title}
@@ -270,6 +269,13 @@ export const IndexPageQuery = graphql`
         url
       }
       description
+    }
+  }
+    contentfulHeroImage {
+    image {
+      file {
+        url
+      }
     }
   }
   }

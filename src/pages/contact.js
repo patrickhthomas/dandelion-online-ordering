@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Container from '../components/Container'
-import SEO from '../components/SEO'
+import { SEO } from '../components/SEO'
 import styled from '@emotion/styled'
 import ContactPageCard from '../components/ContactPageCard'
 import Footer from '../components/Footer'
