@@ -4,9 +4,29 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Only Down`,
-    description: `Get down with Down.`,
     author: `@gatsbyjs`,
+          title: "Dandelion",
+    description:
+      'Dandelion, a community teahouse and apothecary in Vancouver Washington',
+    siteUrl: 'https://www.dandelionteahouse.com',
+    image: '/images/share.jpg',
+    menuLinks: [
+      {
+        name: 'Home',
+        slug: '/',
+      },
+      {
+        name: 'Menu',
+        slug: '/menuV2/',
+      },
+      {
+        name: 'Gallery',
+        slug: '/gallery/',
+      },
+    ],
+    postsPerFirstPage: 7,
+    postsPerPage: 6,
+    basePath: '/',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -23,20 +43,28 @@ module.exports = {
       // Shopify-related variables in the context setup script.
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        whitelist: ["SHOP_NAME", "SHOP_TOKEN"],
+        whitelist: ["SHOP_NAME", "SHOP_TOKEN", "CONTENTFUL_SPACE_ID", "CONTENTFUL_ACCESS_TOKEN"],
       },
     },
     {
       resolve: `gatsby-theme-shopify-manager`,
       options: {
-        shopName: process.env.SHOP_NAME,
-        accessToken: process.env.SHOP_TOKEN,
+        shopName: 'dandelion-teahouse-apothecary-test',
+        accessToken: 'add5d049e54de84605fb2f1e0b0dc8cd'
       },
     },
-    "gatsby-plugin-theme-ui",
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: 'jk2yamefea8g',
+        accessToken: '7d247qkzP36BYwn0Tw9cKdPhEgVMmSTH4WqwosVOWtg',
+        useNameForId: false,
+      }
+    },
     `gatsby-theme-style-guide`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

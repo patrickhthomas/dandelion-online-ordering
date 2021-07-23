@@ -13,9 +13,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
   const colors = product.options.find(
     option => option.name.toLowerCase() === "color"
   ).values
-  const sizes = product.options.find(
-    option => option.name.toLowerCase() === "size"
-  ).values
+
 
   const variants = useMemo(() => prepareVariantsWithOptions(product.variants), [
     product.variants,
@@ -31,18 +29,17 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
   const [color, setColor] = useState(variant.color)
-  const [size, setSize] = useState(variant.size)
   const [addedToCartMessage, setAddedToCartMessage] = useState(null)
 
   useEffect(() => {
     const newVariant = variants.find(variant => {
-      return variant.size === size && variant.color === color
+      return variant.color === color
     })
 
     if (variant.shopifyId !== newVariant.shopifyId) {
       setVariant(newVariant)
     }
-  }, [size, color, variants, variant.shopifyId])
+  }, [color, variants, variant.shopifyId])
 
   const gallery =
     images.length > 1 ? (
@@ -105,13 +102,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
                 selected={color}
                 onChange={event => setColor(event.target.value)}
               />
-              <OptionPicker
-                key="Size"
-                name="Size"
-                options={sizes}
-                selected={size}
-                onChange={event => setSize(event.target.value)}
-              />
+
             </Grid>
           </div>
           <Button
