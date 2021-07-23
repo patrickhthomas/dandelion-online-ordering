@@ -106,7 +106,7 @@ const heroImageV2 = data.contentfulHeroImage.image
             slug={product.handle}
             title={product.title}
             price={Number(product.priceRange.maxVariantPrice.amount)}
-            image={product.images[0].localFile.childImageSharp.fluid}
+            image={heroImageV2}
           />
         ))}
       </Grid>

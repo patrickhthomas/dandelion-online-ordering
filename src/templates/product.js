@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { useState, useEffect, useMemo } from "react"
 import { Styled, jsx } from "theme-ui"
+import styled from '@emotion/styled'
 import Img from "gatsby-image"
 import { Grid, Button, Alert, Close } from "@theme-ui/components"
 import { SEO } from "../components"
@@ -9,17 +10,32 @@ import { Thumbnail, OptionPicker } from "./components"
 import { graphql } from "gatsby"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "./utilities"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
+import template from "lodash.template"
+
+const Huh = styled.span`
+.none {
+  display: none;
+}
+`
 
 const ProductPage = ({ data: { shopifyProduct: product } }) => {
-  const colors = product.options.find(
-    option => option.name.toLowerCase() === "color"
+  const sizes = product.options.find(
+    option => option.name.toLowerCase() === "size"
   ).values
+
+    const milks = product.options[0].name === "Milk" ? product.options.find(
+    option => option.name.toLowerCase() === "milk"
+  ).values : ['n/a', 'n/a'];
+
+  let display = '';
+
+  milks === ['n/a', 'n/a'] ? display = 'none' : display = 'display';
 
 
   const variants = useMemo(() => prepareVariantsWithOptions(product.variants), [
     product.variants,
   ])
-  const images = useMemo(() => prepareVariantsImages(variants, "color"), [
+  const images = useMemo(() => prepareVariantsImages(variants, "size"), [
     variants,
   ])
 
@@ -29,27 +45,21 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
-  const [color, setColor] = useState(variant.color)
+  const [size, setSize] = useState(variant.size)
+  const [milk, setMilk] = useState(variant.milk)
   const [addedToCartMessage, setAddedToCartMessage] = useState(null)
 
   useEffect(() => {
     const newVariant = variants.find(variant => {
-      return variant.color === color
+      return variant.size === size && variant.milk === milk
     })
 
     if (variant.shopifyId !== newVariant.shopifyId) {
       setVariant(newVariant)
     }
-  }, [color, variants, variant.shopifyId])
+  }, [size, milk, variants, variant.shopifyId])
 
-  const gallery =
-    images.length > 1 ? (
-      <Grid gap={2} columns={6}>
-        {images.map(({ src, color }) => (
-          <Thumbnail key={color} src={src} onClick={() => setColor(color)} />
-        ))}
-      </Grid>
-    ) : null
+
 
   async function handleAddToCart() {
     try {
@@ -89,7 +99,6 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           >
             <Img fluid={variant.image.localFile.childImageSharp.fluid} />
           </div>
-          {gallery}
         </div>
         <div sx={{ display: "flex", flexDirection: "column" }}>
           <Styled.h1 sx={{ mt: 0, mb: 2 }}>{product.title}</Styled.h1>
@@ -97,13 +106,22 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           <div>
             <Grid padding={2} columns={2}>
               <OptionPicker
-                key="Color"
-                name="Color"
-                options={colors}
-                selected={color}
-                onChange={event => setColor(event.target.value)}
+                key="Size"
+                name=" "
+                options={sizes}
+                selected={size}
+                onChange={event => setSize(event.target.value)}
               />
-
+            <Huh>
+              <OptionPicker
+                className={display}
+                key="Milk"
+                name=" "
+                options={milks}
+                selected={milk}
+                onChange={event => setMilk(event.target.value)}
+              />
+          </Huh>
             </Grid>
           </div>
           <Button

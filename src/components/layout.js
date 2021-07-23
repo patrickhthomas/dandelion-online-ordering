@@ -7,7 +7,6 @@ import { globalStyles } from '../styles/globalStyles.js'
 
 
 const Root = styled.div`
- 
   p,
   li {
     font-family: ${props => props.theme.fonts.body};
