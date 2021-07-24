@@ -3,8 +3,10 @@ import React from "react"
 import { Styled, jsx } from "theme-ui"
 import Img from "gatsby-image"
 import { Grid, Divider, Button, Card, Text } from "@theme-ui/components"
-import { Layout, SEO, Link } from "../components"
+import { SEO, Link } from "../components"
+import Layout from "../components/Layout"
 import { useStaticQuery, graphql } from "gatsby"
+import Container from "../components/Container"
 
 import {
   useAddItemToCart,
@@ -160,21 +162,6 @@ const CartPage = () => {
       <SEO title="Cart" />
       <Styled.h1>Cart</Styled.h1>
       <Styled.p>Your shopping cart is empty.</Styled.p>
-      <Button
-        sx={{ mt: 4 }}
-        onClick={() =>
-          addItemToCart(
-            variants[Math.floor(Math.random() * (variants.length - 1))]
-              .shopifyId,
-            1
-          )
-        }
-      >
-        <span role="img" aria-label="Dice Emoji">
-          🎲
-        </span>{" "}
-        Random item plz
-      </Button>
     </Layout>
   )
 
@@ -183,6 +170,7 @@ const CartPage = () => {
   ) : (
     <Layout>
       <SEO title="Cart" />
+      <Container>
       <Styled.h1>Cart</Styled.h1>
       {lineItems.map(item => (
         <React.Fragment key={item.id}>
@@ -224,6 +212,7 @@ const CartPage = () => {
           ) : null}
         </Card>
       </div>
+      </Container>
     </Layout>
   )
 }

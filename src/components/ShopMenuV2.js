@@ -113,7 +113,7 @@ grid-gap: .5em;
 <ShopMenuType 
 type={props.data.first.edges}  
 basePath={props.basePath}
-title='First'/>
+title='first'/>
 <ShopMenuType 
 type={props.data.second.edges}
 basePath={props.basePath}

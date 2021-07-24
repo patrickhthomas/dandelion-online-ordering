@@ -34,7 +34,7 @@ const titles = ['first', 'second']
 
 export const query = graphql`
 query MenuV2Query {
-  first: allShopifyProduct(filter: {productType: {eq: "first"}}) {
+  first: allShopifyProduct(filter: {productType: {eq: "Dandelion Teahouse Herbal Blends"}}) {
     edges {
       node {
         id
@@ -53,7 +53,12 @@ query MenuV2Query {
         images {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 446) {
+              gatsbyImageData(width: 100, height: 100)
+              fixed {
+                height
+                width
+              }
+              fluid {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -81,7 +86,7 @@ query MenuV2Query {
         images {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 446) {
+              fluid {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }

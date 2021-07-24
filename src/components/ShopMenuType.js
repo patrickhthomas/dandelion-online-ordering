@@ -72,10 +72,7 @@ justify-content: start;
     }  
     
     `
-    const Description = styled.p`
-    
-    
-    `
+  
     const Price = styled.p`
     
     
@@ -86,18 +83,13 @@ justify-content: start;
     `
     const ProductImage = styled.div`
     place-self: start;
-    display: grid;
+    display: flex;
     grid-row: 1 / 3;
+    height: 200px;
     grid-column: 1 / 4;
     img {
         width: 100%;
         margin: auto;
-    }
-    @media (min-width: ${props => props.theme.responsive.small}) {
-        
-    }
-    @media (min-width: ${props => props.theme.responsive.medium}) {
-        transform: translateY(0em);
     }
     `
     const Frost = styled.div`
@@ -117,10 +109,16 @@ justify-content: start;
 
     
     const ShopMenuType = props => {
+        const getTitle = props.type.map(({node}) => {
+            return (
+                node.productType
+            )
+        })
 
+        const newTitle = getTitle[0]
         return (
 
-        <Collapsible trigger={<><Title className="sectionH2">{props.title}</Title><Arrow/></>}
+        <Collapsible trigger={<><Title className="sectionH2">{newTitle}</Title><Arrow/></>}
         triggerClassName='trigger'
         triggerOpenedClassName='triggerOpened'
         >
@@ -130,16 +128,17 @@ justify-content: start;
             return (
                 <Link url={`/product/${node.handle}/`}>
                 <div className="child" key={i}>
-                <ProductImage>
-                    <Img image={node.images[0].gatsbyImageData}/>
-                </ProductImage>
+                
+                 <Img fluid={node.images[0].localFile.childImageSharp.fluid} />
+                
                 <Frost className="frost">
                 <ProductName>{node.title}</ProductName>
-                <Description>{node.title}</Description>
-                <Price>{node.title}</Price>
+                <Price>${node.priceRange.minVariantPrice.amount} and up</Price>
+                <Price>or ${node.priceRange.maxVariantPrice.amount} packaged</Price>
                 </Frost>
                 </div>
                 </Link>
+                
                 )
             })}
             </Product>

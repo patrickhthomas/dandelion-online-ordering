@@ -53,7 +53,7 @@ const Header = ({ siteTitle }) => {
                 textDecoration: "underline",
               },
               "&::before": {
-                content: '"▼"',
+                content: '" "',
                 position: "absolute",
                 marginLeft: "-20px",
               },

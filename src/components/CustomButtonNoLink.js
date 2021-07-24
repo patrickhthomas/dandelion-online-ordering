@@ -33,9 +33,9 @@ const CustomButton = props => {
   
   
   return (
-    <Link className={props.className} to={props.url}>
+
     <Button className={props.className}>{props.label}</Button>
-    </Link>
+
     )
   }
   

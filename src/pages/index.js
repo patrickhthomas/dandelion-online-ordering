@@ -98,18 +98,6 @@ const heroImageV2 = data.contentfulHeroImage.image
         info={data.contentfulContact}/>
         <Footer />
       </Container>
-      <div><h1>{data.contentfulContact.email}</h1></div>
-      <Grid gap={2} columns={3}>
-        {products.map(product => (
-          <Tile
-            key={product.handle}
-            slug={product.handle}
-            title={product.title}
-            price={Number(product.priceRange.maxVariantPrice.amount)}
-            image={heroImageV2}
-          />
-        ))}
-      </Grid>
     </Layout>
   )
 }

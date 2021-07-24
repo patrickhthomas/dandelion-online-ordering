@@ -77,7 +77,7 @@ const Hero = props => (
     <Title>{props.title}</Title>
     <Subtitle>{props.subtitle}</Subtitle>
     <Tagline>{props.tagline}</Tagline>
-    <CustomButton className='heroCTA' label='Order Now!' />
+    <CustomButton url='/menu'className='heroCTA' label='Order Now!' />
   </Wrapper>
   <Blurb>{props.blurb}</Blurb>
   </>

@@ -11,11 +11,38 @@ import { graphql } from "gatsby"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "./utilities"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
 import template from "lodash.template"
+import CustomButton2 from "../components/CustomButtonNoLink"
+
 
 const Huh = styled.span`
 .none {
   display: none;
 }
+`
+
+const AnotherButton = styled.button`
+width: 100%;
+background-color: ${props => props.theme.colors.accent001};
+
+color: ${props => props.theme.colors.black};
+transition: all .2s ease-in;
+box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+max-width: 12em;
+height: 3em;
+align-self: end;
+border-radius: .5em;
+font-family: ${props => props.theme.fonts.header};
+&:hover {
+  background: ${props => props.theme.colors.highlight};
+  transition: all .2s ease-in;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: ${props => props.theme.colors.background};
+}
+.homeSectionButtons {
+  max-width: 100%;
+}
+
 `
 
 const ProductPage = ({ data: { shopifyProduct: product } }) => {
@@ -124,12 +151,10 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           </Huh>
             </Grid>
           </div>
-          <Button
-            sx={{ margin: 2, display: "block" }}
+          <AnotherButton
+            sx={{display: 'block', margin: '2'}}
             onClick={handleAddToCart}
-          >
-            Add to Cart
-          </Button>
+            >Add to Cart</AnotherButton>
         </div>
       </Grid>
     </Layout>
