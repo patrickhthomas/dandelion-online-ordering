@@ -10,7 +10,7 @@ import PdfMenu from '../components/Pdf'
 
 
 
-const Title = styled.h3`
+const Title = styled.p`
 `
 
 
@@ -81,17 +81,7 @@ justify-content: start;
     const ProductName = styled.h3`
     
     `
-    const ProductImage = styled.div`
-    place-self: start;
-    display: flex;
-    grid-row: 1 / 3;
-    height: 200px;
-    grid-column: 1 / 4;
-    img {
-        width: 100%;
-        margin: auto;
-    }
-    `
+
     const Frost = styled.div`
     grid-area: c;
     display: flex;
@@ -121,6 +111,7 @@ justify-content: start;
         <Collapsible trigger={<><Title className="sectionH2">{newTitle}</Title><Arrow/></>}
         triggerClassName='trigger'
         triggerOpenedClassName='triggerOpened'
+        open={true}
         >
         
         <Product>

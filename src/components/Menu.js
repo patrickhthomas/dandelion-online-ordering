@@ -132,6 +132,7 @@ const Menu = () => {
     <>
     <SmallContainer>
     <Collapsible trigger={bars} 
+    open={true}
     className='small'
     openedClassName='small'
     triggerClassName='trigger'
