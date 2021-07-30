@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import ShopMenuV2 from '../components/ShopMenuV2'
+import Collection from '../components/collection'
 import Container from '../components/Container'
 import { SEO } from '../components/SEO'
 import { startCase } from 'lodash'
@@ -20,8 +21,9 @@ const MenuPage = ({ props, data, pageContext }) => {
     <Layout>
       <SEO title={startCase(basePath)}/>
       <Container>
-        <ShopMenuV2 
-        data={data} 
+
+        <Collection 
+        data={data.collections} 
         basePath={basePath}/>
         
       </Container>
@@ -327,6 +329,44 @@ query MenuV2Query {
             }
           }
         }
+      }
+    }
+  }
+  collections: allShopifyCollection {
+    edges {
+      node {
+        products {
+          title
+          productType
+          id
+          handle
+          descriptionHtml
+          priceRange {
+            maxVariantPrice {
+              amount
+            }
+            minVariantPrice {
+              amount
+            }
+          }
+          images {
+            localFile {
+              childImageSharp {
+                fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+                fixed(width: 80, height: 80) {
+                  height
+                  width
+                  src
+                  srcWebp
+                }
+              }
+            }
+          }
+        }
+        title
+        description
       }
     }
   }
