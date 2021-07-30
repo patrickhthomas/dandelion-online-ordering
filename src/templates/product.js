@@ -6,10 +6,12 @@ import Img from "gatsby-image"
 import { Grid, Button, Alert, Close } from "@theme-ui/components"
 import { SEO } from "../components"
 import Layout from "../components/Layout"
+import { Link } from "gatsby"
 import { Thumbnail, OptionPicker } from "./components"
 import { graphql } from "gatsby"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "./utilities"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
+import { useCartCount } from "gatsby-theme-shopify-manager"
 import template from "lodash.template"
 import CustomButton2 from "../components/CustomButtonNoLink"
 
@@ -18,6 +20,21 @@ const Huh = styled.span`
 .none {
   display: none;
 }
+`
+const NewGrid = styled.div`
+display: grid;
+  @media screen and (min-width: ${props => props.theme.responsive.small}) {
+grid-template-columns: 1fr 1fr;
+  }
+
+`
+
+const NewAlert = styled.div`
+width: 90%;
+margin: auto;
+display: flex;
+flex-flow: row nowrap;
+height: .5em;
 `
 
 const AnotherButton = styled.button`
@@ -58,6 +75,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
   milks === ['n/a', 'n/a'] ? display = 'none' : display = 'display';
 
+  const count = useCartCount()
 
   const variants = useMemo(() => prepareVariantsWithOptions(product.variants), [
     product.variants,
@@ -91,7 +109,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
   async function handleAddToCart() {
     try {
       await addItemToCart(variant.shopifyId, 1)
-      setAddedToCartMessage("🛒 Added to your cart!")
+      setAddedToCartMessage("Added to your cart!")
     } catch (e) {
       setAddedToCartMessage("There was a problem adding this to your cart")
     }
@@ -101,8 +119,8 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
     <Layout>
       <SEO title={product.title} />
       {addedToCartMessage ? (
-        <Alert sx={{ mb: 4 }} variant="primary">
-          {addedToCartMessage}
+        <NewAlert sx={{ mb: 4 }} variant="secondary">
+          <p>{addedToCartMessage}</p>
           <Close
             ml="auto"
             mr={-2}
@@ -113,13 +131,12 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
             }}
             onClick={() => setAddedToCartMessage(null)}
           />
-        </Alert>
+        </NewAlert>
       ) : null}
-      <Grid gap={4} columns={2}>
+      <NewGrid >
         <div>
           <div
             sx={{
-              border: "1px solid gray",
               padding: 2,
               marginBottom: 2,
             }}
@@ -155,8 +172,15 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
             sx={{display: 'block', margin: '2'}}
             onClick={handleAddToCart}
             >Add to Cart</AnotherButton>
+            <Link to="/cart" 
+            activeStyle={{
+        color: 'black', 
+        fontSize: '1.2em', 
+        fontWeight: '700'}}>
+        {`Proceed to Checkout - ${count} items`}  
+      </Link>
         </div>
-      </Grid>
+      </NewGrid>
     </Layout>
   )
 }

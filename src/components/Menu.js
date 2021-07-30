@@ -50,7 +50,7 @@ a {
   &:hover {
     color: ${props => props.theme.colors.highlight};
     background: ${props => props.theme.colors.tertiary};
-    font-size: 1.1em;
+    font-size: 1em;
   }
 }
 @media (min-width: ${props => props.theme.responsive.medium}) {
@@ -201,7 +201,7 @@ const Menu = () => {
         <Link to={link.slug} 
         activeStyle={{
           color: 'black', 
-          fontSize: '.8em', 
+          fontSize: '1.0em', 
           fontWeight: '700', 
           background: 'radial-gradient(.5em .5em at 50% 77%, #FFD13A 0%, #FFD13A 56.77%, #FFFFFF 58.85%)', 
           paddingBottom: '1em',  
@@ -214,7 +214,7 @@ const Menu = () => {
       <Link to="/cart"
       activeStyle={{
           color: 'black', 
-          fontSize: '.8em', 
+          fontSize: '1em', 
           fontWeight: '700', 
           background: 'radial-gradient(.5em .5em at 50% 77%, #FFD13A 0%, #FFD13A 56.77%, #FFFFFF 58.85%)', 
           paddingBottom: '1em',  

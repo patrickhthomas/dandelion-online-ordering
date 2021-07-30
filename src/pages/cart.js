@@ -7,6 +7,7 @@ import { SEO, Link } from "../components"
 import Layout from "../components/Layout"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/Container"
+import CustomButton from "../components/CustomButtonNoLink"
 
 import {
   useAddItemToCart,
@@ -15,6 +16,7 @@ import {
   useCart,
   useUpdateItemQuantity,
 } from "gatsby-theme-shopify-manager"
+import { pointerLockElement } from "min-document"
 
 const CartPage = () => {
   const {
@@ -113,12 +115,12 @@ const CartPage = () => {
       sx={{
         display: "grid",
         gridGap: "15px",
-        gridTemplateColumns: "120px 2fr 80px 80px",
-        alignItems: "center",
+        gridTemplateColumns: "3em 1fr 1fr",
+        alignItems: "start",
       }}
     >
       <div>
-        <div sx={{ padding: 1, border: "1px solid gray" }}>
+        <div sx={{ padding: 1, alignSelf: 'start'}}>
           <Img fluid={getImageFluidForVariant(item.variant.id)} />
         </div>
       </div>
@@ -129,31 +131,45 @@ const CartPage = () => {
         >
           {item.title}
         </Link>
-        <Styled.ul sx={{ mt: 2, mb: 0, padding: 0, listStyle: "none" }}>
+        <div sx={{ mt: 2, mb: 2, ml: -3, padding: 0, listStyle: "none" }}>
           {item.variant.selectedOptions.map(({ name, value }) => (
-            <li key={name}>
+            <p key={name}>
               <strong>{name}: </strong>
               {value}
-            </li>
+            </p>
           ))}
           <li key="quantity">
-            <strong>Quantity: </strong>
+            <strong>qty: </strong>
             {item.quantity}
           </li>
-        </Styled.ul>
+        </div>
       </div>
-      <Button variant="link" onClick={() => removeFromCart(item.variant.id)}>
-        Delete
-      </Button>
-      <Text
+      <div>
+      <p
         sx={{
           fontSize: 4,
           fontWeight: 700,
           marginLeft: "auto",
+          display: 'grid',
+          gridTemplateRows: '1fr 1fr',
+
         }}
       >
         ${Number(item.variant.priceV2.amount).toFixed(2)}
-      </Text>
+      </p>
+      <Button 
+      sx={{
+        placeSelf: 'end',
+        backgroundColor: 'red',
+        cursor: 'pointer',
+
+      }}
+      label='Remove'
+      variant="link" onClick={() => removeFromCart(item.variant.id)}>
+      <h3>Remove</h3>
+      </Button>
+
+      </div>
     </div>
   )
 
@@ -184,20 +200,14 @@ const CartPage = () => {
           <Divider />
 
           <Grid gap={1} columns={2} sx={{ my: 3 }}>
-            <Text>Subtotal:</Text>
-            <Text sx={{ marginLeft: "auto" }}>{total}</Text>
-            <Text>Shipping:</Text>
-            <Text sx={{ marginLeft: "auto" }}> - </Text>
-            <Text>Tax: </Text>
-            <Text sx={{ marginLeft: "auto" }}>{tax}</Text>
+            <p>Pre-Tax Total:</p>
+            <p sx={{ marginLeft: "auto" }}>{total}</p>
           </Grid>
 
           <Divider />
           <Grid gap={1} columns={2}>
-            <Text variant="bold">Estimated Total:</Text>
-            <Text variant="bold" sx={{ marginLeft: "auto" }}>
-              {total}
-            </Text>
+            <p variant="bold">Tax + Shipping Costs are calculated during checkout</p>
+            
           </Grid>
           <br />
           {checkoutUrl != null ? (

@@ -55,6 +55,13 @@ const HeroImg = styled.div`
    max-height: 700px;
   }
   }
+  @media screen and (min-width: ${props => props.theme.responsive.large}) {
+      img {
+   position: relative;
+   min-height: 300px;
+   max-height: 850px;
+  }
+  }
 `
 
 
