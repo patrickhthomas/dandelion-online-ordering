@@ -15,8 +15,6 @@ const MenuPage = ({ props, data, pageContext }) => {
 
 
 
-  const first = data.first.edges
-const titles = ['first', 'second']
 
   return (
     <Layout>
@@ -34,7 +32,7 @@ const titles = ['first', 'second']
 
 export const query = graphql`
 query MenuV2Query {
-  first: allShopifyProduct(filter: {productType: {eq: "Dandelion Teahouse Herbal Blends"}}) {
+  one: allShopifyProduct(filter: {productType: {eq: "Dandelion Teahouse Herbal Blends"}}) {
     edges {
       node {
         id
@@ -54,12 +52,13 @@ query MenuV2Query {
           localFile {
             childImageSharp {
               gatsbyImageData(width: 100, height: 100)
-              fixed {
-                height
-                width
-              }
               fluid {
                 ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
               }
             }
           }
@@ -67,7 +66,7 @@ query MenuV2Query {
       }
     }
   }
-  second: allShopifyProduct(filter: {productType: {eq: "second"}}, sort: {fields: createdAt, order: ASC}) {
+  two: allShopifyProduct(filter: {productType: {eq: "Black Tea"}}, sort: {fields: createdAt, order: ASC}) {
     edges {
       node {
         id
@@ -88,6 +87,242 @@ query MenuV2Query {
             childImageSharp {
               fluid {
                 ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  three: allShopifyProduct(filter: {productType: {eq: "Featured Drinks"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  four: allShopifyProduct(filter: {productType: {eq: "Green Tea"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  five: allShopifyProduct(filter: {productType: {eq: "Oolong Tea"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  six: allShopifyProduct(filter: {productType: {eq: "Specialty Drinks"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  seven: allShopifyProduct(filter: {productType: {eq: "Tisane (Herbal Teas)"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  eight: allShopifyProduct(filter: {productType: {eq: "White Tea"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  nine: allShopifyProduct(filter: {productType: {eq: "Yerba Mate/Guayasa/Yaupon"}}, sort: {fields: createdAt, order: ASC}) {
+    edges {
+      node {
+        id
+        handle
+        descriptionHtml
+        title
+        productType
+        priceRange {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+              fixed(height: 80, width: 80) {
+                height
+                width
+                src
               }
             }
           }

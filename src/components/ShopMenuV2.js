@@ -99,6 +99,8 @@ grid-gap: .5em;
     
     
     const ShopMenu = props => {
+
+
         return (
         
         <Wrapper>
@@ -110,14 +112,51 @@ grid-gap: .5em;
         <SubSection1>
         
         <Products>
+
 <ShopMenuType 
-type={props.data.first.edges}  
+type={props.data.one.edges}  
 basePath={props.basePath}
-title='first'/>
+/>
 <ShopMenuType 
-type={props.data.second.edges}
+type={props.data.two.edges}
 basePath={props.basePath}
-title='Second'/>
+/>
+<ShopMenuType 
+type={props.data.three.edges}
+basePath={props.basePath}
+/>
+<ShopMenuType 
+type={props.data.four.edges}
+basePath={props.basePath}
+/>
+<ShopMenuType 
+type={props.data.five.edges}
+basePath={props.basePath}
+/>
+<ShopMenuType 
+type={props.data.six.edges}
+basePath={props.basePath}
+/>
+<ShopMenuType 
+type={props.data.seven.edges}
+basePath={props.basePath}
+/>
+{props.data.eight ?
+<ShopMenuType 
+type={props.data.eight.edges}
+basePath={props.basePath}
+/> : <div></div> }
+{props.data.nine ?
+<ShopMenuType 
+type={props.data.nine.edges}
+basePath={props.basePath}
+/> : <div></div> }
+{props.data.ten ?
+<ShopMenuType 
+type={props.data.ten.edges}
+basePath={props.basePath}
+/> : <div></div> }
+
         </Products>
             
             

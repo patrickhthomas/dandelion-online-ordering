@@ -14,6 +14,7 @@ import ContactCard from '../components/ContactCard'
 import Container from '../components/Container'
 import { startCase } from 'lodash'
 import Footer from '../components/Footer'
+import { Link } from 'gatsby'
 
 
 const IndexPage = ({ data, pageContext }) => {
@@ -86,7 +87,6 @@ const heroImageV2 = data.contentfulHeroImage.image
           map={map}
           link={link}
         />
-
         <Section3 
           id="card"
           section={data.contentfulSection3}

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from "gatsby"
 import useIsInViewport from 'use-is-in-viewport'
+import CustomButton from './CustomButton'
 
 
 
@@ -161,18 +162,13 @@ return (
       <p>{props.subSection1Desc.internal.content}</p>
       <Products>
       {props.teahouseProduct.map(({ productImage, productName, slug }) => (
-        <Link to={`/${slug}/`}>
         <Product>
           <img src={productImage.file.url}/>
           <div></div>
           <h3>{productName}</h3>
-        </Product>
-        </Link>
+        </Product> 
       ))}
       </Products>
-      <p className="foodDrinkLink">
-        <Link to="/menu">View our full food and drink menu &gt;</Link>
-        </p>
     </SubSection1>
     <SubSection2>
       <h3>{props.subSection2Title}</h3>
@@ -190,6 +186,11 @@ return (
         <a target={target} rel={rel} href="https://www.giftsfromtheearth.com/dandelion-teahouse-apothecary/">View all apothecary items at our Gifts from the Earth website &gt;</a>
         
       </p>
+      <Link to={'/menu'}>
+      <CustomButton
+      label="See the full menu, and order online">
+      </CustomButton>
+      </Link>
     </SubSection2>
 
   </Wrapper>
