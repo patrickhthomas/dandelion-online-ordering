@@ -4,6 +4,10 @@ import styled from '@emotion/styled'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
 import Collapsible from 'react-collapsible'
 import MenuButton from '../components/Icons/openMenu'
+import { Styled, jsx } from "theme-ui"
+import PropTypes from "prop-types"
+import { useCartCount } from "gatsby-theme-shopify-manager"
+import CustomButtonNoHover from './CustomButtonNoHover'
 
 
 
@@ -36,6 +40,7 @@ li {
 a {
   text-decoration: none;
   color: DarkGray;
+  font-size: .8em;
   font-weight: 600;
   padding: 1em;
   padding-left: 15%;
@@ -48,7 +53,11 @@ a {
     font-size: 1.1em;
   }
 }
-
+@media (min-width: ${props => props.theme.responsive.medium}) {
+a {
+  font-size: 1em;
+}
+}
 `
 
 const Header = styled.header`
@@ -95,11 +104,23 @@ display: block;
 
 
 
-@media (min-width: ${props => props.theme.responsive.small}) {
+@media (min-width: ${props => props.theme.responsive.medium}) {
 display: none;
 .menuIcon {
   display: none;
 }
+}
+.noHover {
+  a, button {
+      &:hover {
+      transform; none;
+      font-size: 1.1em;
+    }
+  }
+  &:hover {
+      transform; none;
+      font-size: 1.1em;
+    }
 }
 `
 
@@ -118,7 +139,7 @@ display: none;
   display: none;
 }
 
-@media (min-width: ${props => props.theme.responsive.small}) {
+@media (min-width: ${props => props.theme.responsive.medium}) {
 display: block;
 }
 `
@@ -128,11 +149,14 @@ const bars = <MenuButton/>;
 
 const Menu = () => {
   const { menuLinks } = useSiteMetadata()
+
+  const count = useCartCount()
+
   return (
     <>
     <SmallContainer>
     <Collapsible trigger={bars} 
-    open={true}
+    open={false}
     className='small'
     openedClassName='small'
     triggerClassName='trigger'
@@ -148,13 +172,20 @@ const Menu = () => {
       
       activeStyle={{
         color: 'black', 
-        fontSize: '1.4em', 
+        fontSize: '1.2em', 
         fontWeight: '700',   
       }}>
       {link.name}
       </Link>
       
       ))}
+      <Link to="/cart" 
+            activeStyle={{
+        color: 'black', 
+        fontSize: '1.2em', 
+        fontWeight: '700'}}>
+        {`Cart - ${count} items`}  
+      </Link>
       </div>
       </Nav>
       </Header>
@@ -170,7 +201,7 @@ const Menu = () => {
         <Link to={link.slug} 
         activeStyle={{
           color: 'black', 
-          fontSize: '1.2em', 
+          fontSize: '.8em', 
           fontWeight: '700', 
           background: 'radial-gradient(.5em .5em at 50% 77%, #FFD13A 0%, #FFD13A 56.77%, #FFFFFF 58.85%)', 
           paddingBottom: '1em',  
@@ -179,6 +210,19 @@ const Menu = () => {
         </Link>
         </li>
         ))}
+        <li>
+      <Link to="/cart"
+      activeStyle={{
+          color: 'black', 
+          fontSize: '.8em', 
+          fontWeight: '700', 
+          background: 'radial-gradient(.5em .5em at 50% 77%, #FFD13A 0%, #FFD13A 56.77%, #FFFFFF 58.85%)', 
+          paddingBottom: '1em',  
+        }}
+      >
+        {`Cart - ${count}    items`}  
+      </Link>
+        </li>
         </ul>
         </Nav>
         </Header>

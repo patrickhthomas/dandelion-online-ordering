@@ -332,7 +332,7 @@ query MenuV2Query {
       }
     }
   }
-  collections: allShopifyCollection {
+  collections: allShopifyCollection(filter: {}, sort: {fields: title, order: ASC}) {
     edges {
       node {
         products {

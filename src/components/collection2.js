@@ -13,7 +13,10 @@ const Title = styled.p`
 `
 
 
+const Hidden = styled.div`
+display: none;
 
+`
 
 
 
@@ -21,7 +24,6 @@ const Product = styled.div`
 width: 100%;
 display: flex;
 flex-flow: column nowrap;
-grid-gap: 2em;
 justify-content: start;
 @media (min-width: ${props => props.theme.responsive.small}) {
 
@@ -29,6 +31,7 @@ justify-content: start;
 @media (min-width: ${props => props.theme.responsive.large}) {
 display: grid;
 grid-template-columns: 1fr 1fr;
+grid-gap: 1em;
 }
 .child {
     background: ${props => props.theme.colors.fadedPurple};
@@ -113,7 +116,7 @@ grid-template-columns: 1fr 1fr;
                 </Link>
 
                 
-                : <div></div>
+                : <Hidden></Hidden>
             )}
                 </Product>
                 </Collapsible>

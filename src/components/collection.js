@@ -46,7 +46,10 @@ max-width: 100%;
 padding-top: 2em;
 grid-gap: 3em;
 
-
+.sectionH2 {
+    font-size: 1em;
+    transform: translateY(.2em);
+    }
 .trigger {
     border-radius: .5em;
     padding-bottom: 1em;
@@ -89,13 +92,20 @@ grid-gap: 3em;
         width: 2em;
         height: 2em;
     }
-    .sectionH2 {
-
-    }
     box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
 }
-
-
+@media (min-width: ${props => props.theme.responsive.small}) {
+.sectionH2 {
+    font-size: 1.2em;
+    transform: translateY(.1em);
+    }
+}
+@media (min-width: ${props => props.theme.responsive.medium}) {
+.sectionH2 {
+    font-size: 1.7em;
+    transform: translateY(0em);
+    }
+}
 `
 
     
@@ -124,7 +134,7 @@ grid-gap: 3em;
         {props.data.edges.map(({ node, i }) => {
             return (
  
-                <div className="child" key={i}>
+                <div key={i}>
                     <h2>{node.title}</h2>
                     <p>{node.description}</p>
                     <Collection2 

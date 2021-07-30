@@ -147,7 +147,6 @@ const Layout = ({children, props}) => {
           Skip to content
         </Skip>
         <Menu />
-        <Header></Header>
         <Main 
         id="main">{children}
         </Main>
