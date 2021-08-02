@@ -63,46 +63,33 @@ font-family: ${props => props.theme.fonts.header};
 `
 
 const ProductPage = ({ data: { shopifyProduct: product } }) => {
-  const sizes = product.options.find(
-    option => option.name.toLowerCase() === "size"
-  ).values
 
-    const milks = product.options[0].name === "Milk" ? product.options.find(
-    option => option.name.toLowerCase() === "milk"
-  ).values : ['n/a', 'n/a'];
 
-  let display = '';
+  const myVariants = product.options.map(name => name)
 
-  milks === ['n/a', 'n/a'] ? display = 'none' : display = 'display';
 
   const count = useCartCount()
 
   const variants = useMemo(() => prepareVariantsWithOptions(product.variants), [
     product.variants,
   ])
-  const images = useMemo(() => prepareVariantsImages(variants, "size"), [
-    variants,
-  ])
 
-  if (images.length < 1) {
-    throw new Error("Must have at least one product image!")
-  }
 
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
-  const [size, setSize] = useState(variant.size)
+  const [myName, setMyName] = useState(variant.myName)
   const [milk, setMilk] = useState(variant.milk)
   const [addedToCartMessage, setAddedToCartMessage] = useState(null)
 
   useEffect(() => {
     const newVariant = variants.find(variant => {
-      return variant.size === size && variant.milk === milk
+      return variant.myName === myName
     })
 
     if (variant.shopifyId !== newVariant.shopifyId) {
       setVariant(newVariant)
     }
-  }, [size, milk, variants, variant.shopifyId])
+  }, [myName, variants, variant.shopifyId])
 
 
 
@@ -135,6 +122,8 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
       ) : null}
       <NewGrid >
         <div>
+          <div>
+</div>
           <div
             sx={{
               padding: 2,
@@ -149,23 +138,16 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
           <div>
             <Grid padding={2} columns={2}>
+              {myVariants.map(option => (
               <OptionPicker
-                key="Size"
-                name=" "
-                options={sizes}
-                selected={size}
-                onChange={event => setSize(event.target.value)}
+                key={option.name}
+                name={option.name}
+                options={option.values}
+                selected={myName}
+                onChange={event => setMyName(event.target.myName)}
               />
-            <Huh>
-              <OptionPicker
-                className={display}
-                key="Milk"
-                name=" "
-                options={milks}
-                selected={milk}
-                onChange={event => setMilk(event.target.value)}
-              />
-          </Huh>
+              ))}
+
             </Grid>
           </div>
           <AnotherButton
