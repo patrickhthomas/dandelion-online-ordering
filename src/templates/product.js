@@ -139,6 +139,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           <div>
             <Grid padding={2} columns={2}>
               {myVariants.map(option => (
+                option.name == 'Title' ? <div></div> :
               <OptionPicker
                 key={option.name}
                 name={option.name}

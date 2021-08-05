@@ -1,7 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
-import CustomButton from "../components/CustomButton"
+import HeroCTAButton from "../components/Buttons/HeroCTAButton"
 
 
 const Wrapper = styled.section`
@@ -13,12 +13,12 @@ const Wrapper = styled.section`
   align-content: start;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
-
 .heroCTA {
   place-self: center;
   z-index: 10;
   margin-bottom: 2em;
   margin-top: 2em;
+
 }
 h1, h2, h3 {
     background-color: ${props => props.theme.colors.white50};
@@ -84,7 +84,7 @@ const Hero = props => (
     <Title>{props.title}</Title>
     <Subtitle>{props.subtitle}</Subtitle>
     <Tagline>{props.tagline}</Tagline>
-    <CustomButton url='/menu'className='heroCTA' label='Order Now!' />
+    <HeroCTAButton url='/menu'className='heroCTA' label='Place an order online!' />
   </Wrapper>
   <Blurb>{props.blurb}</Blurb>
   </>
