@@ -34,7 +34,8 @@ justify-content: start;
     grid-gap: 1em;
 }
 .child {
-    background: ${props => props.theme.colors.fadedPurple};
+    background: ${props => props.theme.gradients.rainbowFade};
+    background-position:left;
     width: 100%;
     border-radius: 1em;
     box-shadow: 0px 0px 25px rgba(113, 54, 186, 0.2);
@@ -59,7 +60,10 @@ justify-content: start;
             transition: all .2s ease-in-out;
             transform: scale(1.05);
         }
-        background: ${props => props.theme.colors.primary};
+        background: ${props => props.theme.gradients.rainbow};
+        background-blend-mode: ${props => props.theme.blend.rainbow};
+        background-position:200px -500px;
+        transition: all .2s ease-in-out;
     }  
     
     .thumbnail {

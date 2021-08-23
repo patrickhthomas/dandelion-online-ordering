@@ -1,10 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import styled from '@emotion/styled'
-import { TiPlusOutline } from 'react-icons/ti'
-import { Link } from 'gatsby'
-import Collapsible from 'react-collapsible'
-import Arrow from '../components/Icons/arrow'
 import PdfMenu from '../components/Pdf'
 import ShopMenuType from '../components/ShopMenuType'
 

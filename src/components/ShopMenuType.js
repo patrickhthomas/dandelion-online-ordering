@@ -32,7 +32,7 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 }
 .child {
-    background: ${props => props.theme.colors.fadedPurple};
+    background: ${props => props.theme.colors.yellow};
     width: 100%;
     border-radius: 1em;
     box-shadow: 0px 0px 25px rgba(113, 54, 186, 0.2);

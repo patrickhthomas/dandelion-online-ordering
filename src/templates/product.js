@@ -78,6 +78,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
   const [myName, setMyName] = useState(variant.myName)
+  const [qty, setQty] = useState(1)
   const [milk, setMilk] = useState(variant.milk)
   const [addedToCartMessage, setAddedToCartMessage] = useState(null)
 
@@ -95,7 +96,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
   async function handleAddToCart() {
     try {
-      await addItemToCart(variant.shopifyId, 1)
+      await addItemToCart(variant.shopifyId, this.state.qty)
       setAddedToCartMessage("Added to your cart!")
     } catch (e) {
       setAddedToCartMessage("There was a problem adding this to your cart")
@@ -148,7 +149,9 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
                 onChange={event => setMyName(event.target.myName)}
               />
               ))}
-
+              <label for="productQty">Quantity:</label>
+<input type="number" id="productQty" name="productQty"
+       min="1" max="100" value={qty} onChange={e => setQty(e.target.value)}></input>
             </Grid>
           </div>
           <AnotherButton
