@@ -1,12 +1,15 @@
 /** @jsx jsx */
 import React from "react"
-import { Styled, jsx } from "theme-ui"
+import { jsx } from "theme-ui"
 import Img from "gatsby-image"
 import { Grid, Divider, Button, Card, Text } from "@theme-ui/components"
 import { SEO, Link } from "../components"
 import Layout from "../components/Layout"
+import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/Container"
+import Footer from '../components/Footer'
+import useIsInViewport from 'use-is-in-viewport'
 import CustomButton from "../components/CustomButtonNoLink"
 
 import {
@@ -16,9 +19,76 @@ import {
   useCart,
   useUpdateItemQuantity,
 } from "gatsby-theme-shopify-manager"
-import { pointerLockElement } from "min-document"
+const Wrapper = styled.div`
+margin: auto;
+padding-bottom: 3em;
+padding-top: 1em;
+margin-top: 3em;
+display: grid;
+position: relative;
+border-radius: 1em;
+grid-gap: .5em;
+height: ${props => props.height || 'auto'};
+@media (min-width: ${props => props.theme.responsive.small}) {
+  max-width: ${props => props.theme.sizes.maxWidthCentered}; 
+}
+.checkoutButtonContainer {
+  display: grid;
+  width: 100%;
+}
+
+`
+
+const CheckoutButton = styled.button`
+width: 100%;
+background-color: ${props => props.theme.colors.yellow};
+
+color: ${props => props.theme.colors.black};
+transition: all .2s ease-in;
+box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+max-width: 12em;
+height: 3em;
+justify-self: center;
+border-radius: .5em;
+font-family: ${props => props.theme.fonts.header};
+&:hover {
+  background: ${props => props.theme.colors.highlight};
+  transition: all .2s ease-in;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: ${props => props.theme.colors.background};
+}
+.homeSectionButtons {
+  max-width: 100%;
+}
+`
+const RemoveButton = styled.button`
+width: 100%;
+background-color: ${props => props.theme.colors.yellow};
+
+color: ${props => props.theme.colors.black};
+transition: all .2s ease-in;
+box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+max-width: 12em;
+height: 3em;
+align-self: end;
+border-radius: .5em;
+font-family: ${props => props.theme.fonts.header};
+&:hover {
+  box-shadow: 0px 0px 10px rgba(180, 28, 33, .5)
+;
+  transition: all .2s ease-in;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: rgba(180, 28, 33, 1);
+}
+.homeSectionButtons {
+  max-width: 100%;
+}
+`
 
 const CartPage = () => {
+  const [isInViewport, targetRef] = useIsInViewport({ threshold: .001 })
   const {
     allShopifyProductVariant: { nodes: variants },
     allShopifyProduct: { nodes: products },
@@ -113,6 +183,9 @@ const CartPage = () => {
   const LineItem = ({ item }) => (
     <div
       sx={{
+        paddingTop: '32px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
         display: "grid",
         gridGap: "15px",
         gridTemplateColumns: "3em 1fr 1fr",
@@ -157,17 +230,19 @@ const CartPage = () => {
       >
         ${Number(item.variant.priceV2.amount).toFixed(2)}
       </p>
-      <Button 
+      <RemoveButton 
       sx={{
         placeSelf: 'end',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
+        border: 3,
         cursor: 'pointer',
+        
 
       }}
       label='Remove'
       variant="link" onClick={() => removeFromCart(item.variant.id)}>
-      <h3>Remove</h3>
-      </Button>
+      <h4>Remove from cart</h4>
+      </RemoveButton>
 
       </div>
     </div>
@@ -176,8 +251,8 @@ const CartPage = () => {
   const emptyCart = (
     <Layout>
       <SEO title="Cart" />
-      <Styled.h1>Cart</Styled.h1>
-      <Styled.p>Your shopping cart is empty.</Styled.p>
+      <h1>Cart</h1>
+      <p>Your shopping cart is empty.</p>
     </Layout>
   )
 
@@ -186,8 +261,11 @@ const CartPage = () => {
   ) : (
     <Layout>
       <SEO title="Cart" />
-      <Container>
-      <Styled.h1>Cart</Styled.h1>
+      <Wrapper
+      ref={targetRef}
+      className={isInViewport ? 'isVisibleNoAnimation' : 'isHidden'}
+      >     
+      <h1>Cart</h1>
       {lineItems.map(item => (
         <React.Fragment key={item.id}>
           <LineItem key={item.id} item={item} />
@@ -196,7 +274,7 @@ const CartPage = () => {
       ))}
       <div sx={{ display: "flex" }}>
         <Card sx={{ marginLeft: "auto", minWidth: "10rem", p: 4 }}>
-          <Styled.h3 sx={{ mt: 0, mb: 3 }}>Cart Summary</Styled.h3>
+          <h3 sx={{ mt: 0, mb: 3 }}>Cart Summary</h3>
           <Divider />
 
           <Grid gap={1} columns={2} sx={{ my: 3 }}>
@@ -211,18 +289,20 @@ const CartPage = () => {
           </Grid>
           <br />
           {checkoutUrl != null ? (
-            <a
+            <a 
+              className='checkoutButtonContainer'
               sx={{ mt: 4, width: "100%" }}
               href={checkoutUrl}
               target="_blank"
               rel="noopener noreferrer"
-            >
-              Checkout
+            ><CheckoutButton>Checkout</CheckoutButton>
+              
             </a>
           ) : null}
         </Card>
       </div>
-      </Container>
+      </Wrapper>
+      <Footer />
     </Layout>
   )
 }

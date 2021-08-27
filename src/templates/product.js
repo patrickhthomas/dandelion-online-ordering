@@ -12,6 +12,7 @@ import { graphql } from "gatsby"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "./utilities"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
 import { useCartCount } from "gatsby-theme-shopify-manager"
+import Footer from '../components/Footer'
 
 
 
@@ -60,6 +61,29 @@ font-family: ${props => props.theme.fonts.header};
 }
 
 `
+const CartButton = styled.button`
+width: 100%;
+background-color: ${props => props.theme.colors.yellow};
+
+color: ${props => props.theme.colors.black};
+transition: all .2s ease-in;
+box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+max-width: 12em;
+height: 3em;
+align-self: end;
+border-radius: .5em;
+font-family: ${props => props.theme.fonts.header};
+&:hover {
+  background: ${props => props.theme.colors.highlight};
+  transition: all .2s ease-in;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: ${props => props.theme.colors.background};
+}
+.homeSectionButtons {
+  max-width: 100%;
+}
+`
 
 const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
@@ -107,7 +131,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
   async function handleAddToCart() {
     try {
-      await addItemToCart(variant.shopifyId, 1)
+      await addItemToCart(variant.shopifyId, Number(qty))
       setAddedToCartMessage("Added to your cart!")
     } catch (e) {
       setAddedToCartMessage("There was a problem adding this to your cart")
@@ -184,12 +208,15 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
                 onChange={event => setValue3(event.target.value)}
               /> : <div></div>
             }
+            <div></div>
+            <OptionPicker
+                key={1}
+                name={'Quantity'}
+                options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                selected={qty}
+                onChange={event => setQty(event.target.value)}
+            />
 
-
-              
-              <label for="productQty">Quantity:</label>
-<input type="number" id="productQty" name="productQty"
-       min="1" max="100" value={qty} onChange={e => setQty(e.target.value)}></input>
             </Grid>
           </div>
           <AnotherButton
@@ -201,11 +228,14 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
         color: 'black', 
         fontSize: '1.2em', 
         fontWeight: '700'}}>
-        {`Proceed to Checkout - ${count} items`}  
+        <CartButton
+        sx={{display: 'block', margin: '2'}}
+        >{`My Cart - ${count} items`}</CartButton>    
       </Link>
         </div>
       </NewGrid>
       <AnotherButton onClick={handleTest}>PRESS IT</AnotherButton>
+      <Footer />
     </Layout>
   )
 }

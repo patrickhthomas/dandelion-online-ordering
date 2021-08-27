@@ -112,6 +112,20 @@ section {
 
 }
 
+ .isVisibleNoAnimation{
+  opacity: 100%;
+  transition: all 0.5s ease-in 200ms;
+    @media (min-width: ${props => props.theme.responsive.small}) {
+     box-shadow: 0px 0px 25px rgba(113, 54, 186, 0.2);
+    background-position: left 4.5em;
+  }
+  background-size: 100% .2em;
+  background-repeat: no-repeat;
+  background-position: left 2.5em;
+  transition-delay: 100ms;
+
+}
+
 
 
 .isHidden{
@@ -128,8 +142,7 @@ section {
 `
 
 const Layout = ({children, props}) => {
-  const shopName = 'dandelion-teahouse-apothecary-test';
-  const accessToken = 'add5d049e54de84605fb2f1e0b0dc8cd';
+
 
   function handleFirstTab(e) {
     if (e.keyCode === 9) {

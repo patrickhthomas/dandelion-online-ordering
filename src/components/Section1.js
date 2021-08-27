@@ -1,5 +1,4 @@
 import React from 'react'
-import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import Clock from '../components/Icons/clock'
 import Pin from '../components/Icons/pin'
