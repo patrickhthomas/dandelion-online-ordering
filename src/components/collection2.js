@@ -6,7 +6,6 @@ import { Link } from 'gatsby'
 import Collapsible from 'react-collapsible'
 import Arrow from '../components/Icons/arrow'
 import PdfMenu from '../components/Pdf'
-import ShopMenuType from '../components/ShopMenuType'
 
 
 const Title = styled.p`
@@ -35,7 +34,8 @@ justify-content: start;
 }
 .child {
     background: ${props => props.theme.gradients.rainbowFade};
-    background-position:left;
+    opacity: .85;
+    background-position: 50vw 100vw;
     width: 100%;
     border-radius: 1em;
     box-shadow: 0px 0px 25px rgba(113, 54, 186, 0.2);
@@ -61,8 +61,9 @@ justify-content: start;
             transform: scale(1.05);
         }
         background: ${props => props.theme.gradients.rainbow};
+        opacity: 1;
         background-blend-mode: ${props => props.theme.blend.rainbow};
-        background-position:200px -500px;
+        background-position:400px 100px;
         transition: all .2s ease-in-out;
     }  
     

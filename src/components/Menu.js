@@ -96,8 +96,12 @@ z-index: 1000;
 .trigger {
   display: flex;
   justify-content: end;
-  img {   
+  .menuIcon {  
+    cursor: pointer; 
   }
+  cursor: pointer;
+}
+.triggerIsOpened {
   cursor: pointer;
 }
 display: block;

@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import ShopMenuV2 from '../components/ShopMenuV2'
 import Collection from '../components/collection'
 import Container from '../components/Container'
 import { SEO } from '../components/SEO'

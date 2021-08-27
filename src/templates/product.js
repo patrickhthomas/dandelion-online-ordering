@@ -12,8 +12,7 @@ import { graphql } from "gatsby"
 import { prepareVariantsWithOptions, prepareVariantsImages } from "./utilities"
 import { useAddItemToCart } from "gatsby-theme-shopify-manager"
 import { useCartCount } from "gatsby-theme-shopify-manager"
-import template from "lodash.template"
-import CustomButton2 from "../components/CustomButtonNoLink"
+
 
 
 const Huh = styled.span`
@@ -64,8 +63,7 @@ font-family: ${props => props.theme.fonts.header};
 
 const ProductPage = ({ data: { shopifyProduct: product } }) => {
 
-
-  const myVariants = product.options.map(name => name)
+  const myOptions = product.options.map(name => name)
 
 
   const count = useCartCount()
@@ -74,33 +72,51 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
     product.variants,
   ])
 
-
+ 
+  
   const addItemToCart = useAddItemToCart()
   const [variant, setVariant] = useState(variants[0])
-  const [myName, setMyName] = useState(variant.myName)
   const [qty, setQty] = useState(1)
-  const [milk, setMilk] = useState(variant.milk)
+  const keys = Object.keys(variant)
+  const key1 = keys[0]
+  const key2 = keys[1]
+  const key3 = keys[2]
+  const [value1, setValue1] = useState(variant[key1])
+  const [value2, setValue2] = useState(variant[key2])
+  const [value3, setValue3] = useState(variant[key3])
   const [addedToCartMessage, setAddedToCartMessage] = useState(null)
 
   useEffect(() => {
     const newVariant = variants.find(variant => {
-      return variant.myName === myName
+      if (keys[1] !== 'shopifyId') {
+        return variant[key1] === value1 && variant[key2] === value2 
+      } else {
+        return variant[key1] === value1
+      }
+      
     })
 
     if (variant.shopifyId !== newVariant.shopifyId) {
       setVariant(newVariant)
     }
-  }, [myName, variants, variant.shopifyId])
+    console.log(variant.selectedOption)
+  }, [key1, key2, value1, value2, variants, variant.shopifyId])
+
 
 
 
   async function handleAddToCart() {
     try {
-      await addItemToCart(variant.shopifyId, this.state.qty)
+      await addItemToCart(variant.shopifyId, 1)
       setAddedToCartMessage("Added to your cart!")
     } catch (e) {
       setAddedToCartMessage("There was a problem adding this to your cart")
     }
+  }
+
+  async function handleTest(e) {
+    e.preventDefault();
+    console.log(variant);
   }
 
   return (
@@ -121,6 +137,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           />
         </NewAlert>
       ) : null}
+      
       <NewGrid >
         <div>
           <div>
@@ -139,16 +156,37 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
           <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
           <div>
             <Grid padding={2} columns={2}>
-              {myVariants.map(option => (
-                option.name == 'Title' ? <div></div> :
+              
               <OptionPicker
-                key={option.name}
-                name={option.name}
-                options={option.values}
-                selected={myName}
-                onChange={event => setMyName(event.target.myName)}
+                key={keys[0]}
+                name={keys[0]}
+                options={myOptions[0].values}
+                selected={value1}
+                onChange={event => setValue1(event.target.value)}
               />
-              ))}
+
+              {keys[1] !== 'shopifyId' ? 
+              <OptionPicker
+                key={keys[1]}
+                name={keys[1]}
+                options={myOptions[1].values}
+                selected={value2}
+                onChange={event => setValue2(event.target.value)}
+              /> : <div></div>
+            }
+
+            {keys[1] !== 'shopifyId' && keys[2] !== 'shopifyId' ? 
+              <OptionPicker
+                key={keys[2]}
+                name={keys[2]}
+                options={myOptions[2].values}
+                selected={value3}
+                onChange={event => setValue3(event.target.value)}
+              /> : <div></div>
+            }
+
+
+              
               <label for="productQty">Quantity:</label>
 <input type="number" id="productQty" name="productQty"
        min="1" max="100" value={qty} onChange={e => setQty(e.target.value)}></input>
@@ -167,6 +205,7 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
       </Link>
         </div>
       </NewGrid>
+      <AnotherButton onClick={handleTest}>PRESS IT</AnotherButton>
     </Layout>
   )
 }

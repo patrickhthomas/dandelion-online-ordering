@@ -7,7 +7,6 @@ import Collapsible from 'react-collapsible'
 import Arrow from '../components/Icons/arrow'
 import PdfMenu from '../components/Pdf'
 import Collection2 from './collection2'
-import ShopMenuType from '../components/ShopMenuType'
 
 
 const Wrapper = styled.section`
