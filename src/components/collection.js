@@ -1,10 +1,7 @@
 import React from 'react'
-import Img from 'gatsby-image'
+
 import styled from '@emotion/styled'
-import { TiPlusOutline } from 'react-icons/ti'
-import { Link } from 'gatsby'
-import Collapsible from 'react-collapsible'
-import Arrow from '../components/Icons/arrow'
+
 import PdfMenu from '../components/Pdf'
 import Collection2 from './collection2'
 
@@ -112,7 +109,6 @@ grid-gap: 3em;
     display: flex;
     justify-content: space-between;
     `
-    
     
     const Collection = props => {
 

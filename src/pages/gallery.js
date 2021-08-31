@@ -36,6 +36,9 @@ query GalleryQuery {
       file {
         url
       }
+      fluid(maxWidth: 600, maxHeight: 600) {
+        src
+      }
       description
     }
     description {

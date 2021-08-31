@@ -121,6 +121,7 @@ div {
      grid-column: 1 / 1;
      grid-row: 1 / 2;
      align-self: start;
+     border-radius: 1em;
  }
   @media (min-width: ${props => props.theme.responsive.small}) {
     border-radius: .5em;
@@ -163,9 +164,7 @@ return (
       <Products>
       {props.teahouseProduct.map(({ productImage, productName, slug }) => (
         <Product>
-          <img src={productImage.file.url}/>
-          <div></div>
-          <h3>{productName}</h3>
+          <img src={productImage.fixed.srcWebp}/>
         </Product> 
       ))}
       </Products>
@@ -177,18 +176,17 @@ return (
       {props.apothecaryProduct.map(({ productImage, productName }) => (
         <Product>
           <img src={productImage.file.url}/>
-          <div></div>
-          <h3>{productName}</h3>
+
         </Product>
       ))}
       </Products>
       <p className="apothecaryLink">
-        <a target={target} rel={rel} href="https://www.giftsfromtheearth.com/dandelion-teahouse-apothecary/">View all apothecary items at our Gifts from the Earth website &gt;</a>
+        <a target={target} rel={rel} href="https://www.giftsfromtheearth.com/dandelion-teahouse-apothecary/">Our sister site has even more body care products, check them out!&gt;</a>
         
       </p>
       <Link to={'/menu'}>
       <CustomButton
-      label="See the full menu, and order online">
+      label="Order online for in store pick up">
       </CustomButton>
       </Link>
     </SubSection2>

@@ -2,6 +2,12 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
+.visibleGrid {
+  display: grid;
+}
+invisibleGrid {
+  display: none;
+}
   margin: 0 auto auto;
   width: 100%;
   max-width: ${props => props.theme.sizes.maxWidth};

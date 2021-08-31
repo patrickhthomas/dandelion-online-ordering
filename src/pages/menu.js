@@ -5,14 +5,17 @@ import Collection from '../components/collection'
 import Container from '../components/Container'
 import { SEO } from '../components/SEO'
 import { startCase } from 'lodash'
+import ShopHours from '../components/ShopHours'
 import { useSiteMetadata } from '../hooks/use-site-metadata'
 import Footer from '../components/Footer'
 
+  //establishes variables for respective daily hours
 
 const MenuPage = ({ props, data, pageContext }) => {
 
   const { basePath } = pageContext
-
+  const days = data.allContentfulDay.edges
+  const isOpen = data.allContentfulDay.edges
 
 
 
@@ -20,10 +23,18 @@ const MenuPage = ({ props, data, pageContext }) => {
     <Layout>
       <SEO title={startCase(basePath)}/>
       <Container>
+        <ShopHours
+        days={days}
+        isOpen={isOpen}
+        />
 
         <Collection 
         data={data.collections} 
-        basePath={basePath}/>
+        basePath={basePath}
+        days={days}
+        isOpen={isOpen}
+        />
+        
         
       </Container>
       <Footer />
@@ -68,6 +79,16 @@ query MenuV2Query {
         }
         title
         description
+      }
+    }
+  }
+  allContentfulDay(sort: {fields: tag, order: ASC}) {
+    edges {
+      node {
+        dayOfWeek
+        closeTime
+        areYouOpen
+        openTime
       }
     }
   }

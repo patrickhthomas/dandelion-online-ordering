@@ -16,6 +16,7 @@ export default {
     white25: 'rgba(255, 255, 255, 0.25)',
     white50: 'rgba(255, 255, 255, 0.50)',
     accent001: '#2F9E44',
+    accent002: '#B91E23',
   },
   gradients: {
     primary: 'linear-gradient(140.98deg, rgba(113, 54, 186, 0.5) 17.15%, rgba(14, 7, 24, 0.5) 59.18%, rgba(110, 38, 255, 0.5) 117.37%), radial-gradient(106.5% 85.16% at 73.56% 25.55%, rgba(113, 54, 186, 0.5) 6.86%, rgba(48, 23, 79, 0.5) 58.17%, rgba(14, 7, 24, 0.5) 96.14%)',
@@ -26,7 +27,10 @@ export default {
     rainbow: 'soft-light, screen, normal'
   },
   shadows: {
-    button: 'box-shadow: 0px 0px 5px rgba(113, 54, 186, 0.7);'
+    button: '0px 0px 5px rgba(113, 54, 186, 0.7);'
+  },
+  hover: {
+    button: 'transition: all .2s ease-in; transform: scale(1.05); cursor: pointer;',
   },
   fonts: {
     body:

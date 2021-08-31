@@ -15,7 +15,7 @@ import Container from '../components/Container'
 import { startCase } from 'lodash'
 import Footer from '../components/Footer'
 import { Link } from 'gatsby'
-
+import { DateTime } from '../components/DateAndTime'
 
 const IndexPage = ({ data, pageContext }) => {
   const { basePath } = pageContext
@@ -97,6 +97,7 @@ const heroImageV2 = data.contentfulHeroImage.image
         id="card"
         info={data.contentfulContact}/>
         <Footer />
+        <DateTime></DateTime>
       </Container>
     </Layout>
   )
@@ -185,6 +186,12 @@ export const IndexPageQuery = graphql`
         slug
         productName
         productImage {
+                fixed(width: 800, height: 800) {
+                  height
+                  width
+                  src
+                  srcWebp
+                }
           file {
             url
           }
@@ -203,6 +210,12 @@ export const IndexPageQuery = graphql`
       products {
         productName
         productImage {
+                fixed(width: 800, height: 800) {
+                  height
+                  width
+                  src
+                  srcWebp
+                }
           file {
             url
           }

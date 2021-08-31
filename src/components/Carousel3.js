@@ -64,7 +64,7 @@ const CustomCarousel3 = ({ alias }) => {
         buttonLabel='Next'
         thumbAlias={alias}
         photoSrc={alias.images.map(photo => (
-            photo.file.url
+            photo.fluid.src
         ))}/>
         </Container2>
 
