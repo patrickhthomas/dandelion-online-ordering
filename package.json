@@ -1,9 +1,9 @@
 {
-  "name": "sell-things-fast",
-  "private": true,
-  "description": "A proof-of-concept Gatsby site with a fake Shopify store called Only Down",
+  "name": "Dandelion Teahouse and Apothecary",
+  "private": false,
+  "description": "A community oriented teahouse and apothecary selling freshly made teas, local baked goods, and handcrafted body care solutions.",
   "version": "0.1.0",
-  "author": "Trevor Harmon <thetrevorharmon@gmail.com>",
+  "author": "Patrick Thomas <patrick@patrickthomas.design>",
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^11.3.0",
@@ -58,9 +58,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thetrevorharmon/sell-things-fast"
-  },
-  "bugs": {
-    "url": "https://github.com/thetrevorharmon/sell-things-fast/issues"
+    "url": "https://github.com/patrickhthomas/dandelion-online-ordering"
   }
 }
