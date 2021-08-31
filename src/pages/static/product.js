@@ -43,7 +43,7 @@ const ProductPage = () => {
       >
         <Img
           key={image.id}
-          fluid={image.childImageSharp.fluid}
+          fluid={image.childImageSharp.fluid ? image.childImageSharp.fluid : null}
           onClick={() => setImage(image)}
         />
       </div>
@@ -59,7 +59,7 @@ const ProductPage = () => {
           marginBottom: 2,
         }}
       >
-        <Img fluid={image.childImageSharp.fluid} />
+        <Img fluid={image.childImageSharp.fluid ? image.childImageSharp.fluid : null} />
       </div>
       <Grid gap={2} columns={6}>
         {productImages.map(productImage => (

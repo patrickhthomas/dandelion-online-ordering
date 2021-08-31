@@ -9,7 +9,7 @@ background-color: ${props => props.theme.colors.yellow};
 padding: 1em;
 color: ${props => props.theme.colors.black};
 transition: all .2s ease-in;
-box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+box-shadow: 0px 0px 14px 5px rgba(113, 54, 186, 0.6);
 max-width: 12em;
 align-self: end;
 border-radius: .5em;

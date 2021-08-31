@@ -31,7 +31,7 @@ const Tile = ({ title, slug, price, image }) => {
       }}
     >
       <div sx={{ position: "relative" }}>
-        <Img fluid={imageSrc} />
+        <Img fluid={imageSrc ? imageSrc : null} />
       </div>
       <Styled.h2 sx={{ mt: 4, mb: 0, fontSize: 3 }}>{title}</Styled.h2>
       <Text sx={{ fontSize: 4, mb: 2 }}>${price.toFixed(2)}</Text>

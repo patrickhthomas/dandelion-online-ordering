@@ -16,7 +16,7 @@ export const Thumbnail = ({ src, onClick }) => {
       }}
       onClick={onClick}
     >
-      <Img fluid={src.localFile.childImageSharp.fluid} />
+      <Img fluid={src.localFile.childImageSharp.fluid ? src.localFile.childImageSharp.fluid : null} />
     </button>
   )
 }

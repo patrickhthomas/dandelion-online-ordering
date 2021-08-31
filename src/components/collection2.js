@@ -24,9 +24,7 @@ width: 100%;
 display: flex;
 flex-flow: column nowrap;
 justify-content: start;
-@media (min-width: ${props => props.theme.responsive.small}) {
-    
-}
+
 @media (min-width: ${props => props.theme.responsive.large}) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -35,7 +33,7 @@ justify-content: start;
 .child {
     background: ${props => props.theme.gradients.rainbowFade};
     opacity: .85;
-    background-position: 50vw 100vw;
+    background-position: 90vw 100vw;
     width: 100%;
     border-radius: 1em;
     box-shadow: 0px 0px 25px rgba(113, 54, 186, 0.2);
@@ -63,13 +61,22 @@ justify-content: start;
         background: ${props => props.theme.gradients.rainbow};
         opacity: 1;
         background-blend-mode: ${props => props.theme.blend.rainbow};
-        background-position:400px 100px;
+        background-position: 50vw 100vw;
         transition: all .2s ease-in-out;
     }  
     
     .thumbnail {
         max-width: 5em;
     }
+    @media (min-width: ${props => props.theme.responsive.small}) {
+        background-position: 70vw 100vw;
+}
+    @media (min-width: ${props => props.theme.responsive.large}) {
+        background-position: 30em;
+        &:hover {
+           background-position: 24em; 
+        }
+}
     `
     
     const ProductName = styled.h3`
@@ -79,6 +86,11 @@ justify-content: start;
     const Grid = styled.div`
     display: grid;
     grid-gap: .5em;
+    `
+    const PlaceHolder = styled.div`
+    width: 5em;
+    height: 5em;
+    background: ${props => props.theme.colors.background};
     `
     
     
@@ -100,7 +112,7 @@ justify-content: start;
                     trigger={<><Title className="sectionH2">{newTitle}</Title><Arrow/></>}
                     triggerClassName='trigger'
                     triggerOpenedClassName='triggerOpened'
-                    open={false}
+                    open={newTitle ==='Monthly Specials' ? true : false}
                     >
                     <Product>
                     {props.category.map(({ title, handle, images, productType, i }) => 
@@ -110,9 +122,9 @@ justify-content: start;
                     
                     <Link to={`/product/${handle}/`}>
                     <div className="child" key={i}>
-                    
+                    {images[0] ? 
                     <Img className='thumbnail' fixed={images[0].localFile.childImageSharp.fixed} />
-                    
+                     : <PlaceHolder/>}
                     
                     
                     <ProductName>{title}</ProductName>

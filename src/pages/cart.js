@@ -3,14 +3,15 @@ import React from "react"
 import { jsx } from "theme-ui"
 import Img from "gatsby-image"
 import { Grid, Divider, Button, Card, Text } from "@theme-ui/components"
-import { SEO, Link } from "../components"
+import { SEO } from "../components"
+import { Link } from "gatsby"
 import Layout from "../components/Layout"
 import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from "gatsby"
-import Container from "../components/Container"
 import Footer from '../components/Footer'
 import useIsInViewport from 'use-is-in-viewport'
 import CustomButton from "../components/CustomButtonNoLink"
+import CustomButton2 from "../components/CustomButton"
 
 import {
   useAddItemToCart,
@@ -36,6 +37,25 @@ height: ${props => props.height || 'auto'};
   display: grid;
   width: 100%;
 }
+`
+
+const EmptyCartWrapper = styled.div`
+margin: auto;
+padding-bottom: 3em;
+padding-top: 1em;
+margin-top: 3em;
+position: relative;
+border-radius: 1em;
+height: ${props => props.height || 'auto'};
+@media (min-width: ${props => props.theme.responsive.small}) {
+  max-width: ${props => props.theme.sizes.maxWidthCentered}; 
+}
+.getShoppin {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 1em;
+}
 
 `
 
@@ -50,6 +70,33 @@ max-width: 12em;
 height: 3em;
 justify-self: center;
 border-radius: .5em;
+font-family: ${props => props.theme.fonts.header};
+&:hover {
+  background: ${props => props.theme.colors.highlight};
+  transition: all .2s ease-in;
+  transform: scale(1.05);
+  cursor: pointer;
+  color: ${props => props.theme.colors.background};
+}
+.homeSectionButtons {
+  max-width: 100%;
+}
+
+`
+const GetShoppinButton = styled.button`
+width: 100%;
+background-color: ${props => props.theme.colors.yellow};
+
+color: ${props => props.theme.colors.black};
+transition: all .2s ease-in;
+box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
+max-width: 12em;
+height: 3em;
+justify-self: center;
+border-radius: .5em;
+padding: 1em;
+padding-left: 2em;
+padding-right: 2em;
 font-family: ${props => props.theme.fonts.header};
 &:hover {
   background: ${props => props.theme.colors.highlight};
@@ -199,7 +246,7 @@ const CartPage = () => {
       </div>
       <div>
         <Link
-          url={`/product/${getHandleForVariant(item.variant.id)}`}
+          to={`/product/${getHandleForVariant(item.variant.id)}`}
           sx={{ fontSize: 3, m: 0, fontWeight: 700 }}
         >
           {item.title}
@@ -251,8 +298,18 @@ const CartPage = () => {
   const emptyCart = (
     <Layout>
       <SEO title="Cart" />
-      <h1>Cart</h1>
-      <p>Your shopping cart is empty.</p>
+        <EmptyCartWrapper
+      ref={targetRef}
+      className={isInViewport ? 'isVisibleNoAnimation' : 'isHidden'}
+      > 
+      <h1 className="getShoppin">Cart</h1>
+      <p className="getShoppin">Your shopping cart is empty.</p>
+            <Link to={'/menu'} className="getShoppin">
+      <GetShoppinButton>
+      Get shoppin'!
+      </GetShoppinButton>
+      </Link>
+      </EmptyCartWrapper>
     </Layout>
   )
 

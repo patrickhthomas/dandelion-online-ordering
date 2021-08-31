@@ -172,12 +172,12 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
               marginBottom: 2,
             }}
           >
-            <Img fluid={variant.image.localFile.childImageSharp.fluid} />
+            <Img fluid={variant.image ? variant.image.localFile.childImageSharp.fluid : null} />
           </div>
         </div>
         <div sx={{ display: "flex", flexDirection: "column" }}>
           <Styled.h1 sx={{ mt: 0, mb: 2 }}>{product.title}</Styled.h1>
-          <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+          <p dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
           <div>
             <Grid padding={2} columns={2}>
               
@@ -234,7 +234,6 @@ const ProductPage = ({ data: { shopifyProduct: product } }) => {
       </Link>
         </div>
       </NewGrid>
-      <AnotherButton onClick={handleTest}>PRESS IT</AnotherButton>
       <Footer />
     </Layout>
   )

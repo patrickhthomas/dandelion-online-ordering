@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
+import Collapsible from 'react-collapsible'
 import { jsx } from 'theme-ui'
 
 
@@ -49,12 +50,38 @@ const [newClassName, setNewClassName] = useState('grid')
 
 const Alert = styled.div`
 display: ${newClassName};
-grid-template-areas: 'a a';
+grid-template-areas: 'a';
 padding: 2em;
 background-color: ${props => props.theme.colors.accent002};
 width: 100%;
 margin-bottom: 2em;
 border-radius: 1em;
+h3 {
+  color: white;
+}
+.trigger, .triggerOpened {
+  display: flex;
+}
+.trigger {
+  .downArrow {
+    transform: rotate(270deg);
+  }
+}
+.downArrow {
+  transform: scaleX(-1);
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  padding: 0;
+  place-self: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.inner {
+  display: grid;
+  grid-template-areas: 'a a';
+}
 `
 
 async function handleDismiss(e) {
@@ -67,9 +94,16 @@ async function handleDismiss(e) {
 
     <Alert
     sx={{display: 'none'}}>
+    <Collapsible
+contentInnerClassName='inner'
+                    key='huh'
+                    trigger={<><h3>Be sure to check our hours prior to ordering!</h3><h3 className='downArrow'>&#9660;</h3></>}
+                    triggerClassName='trigger'
+                    triggerOpenedClassName='triggerOpened'
+                    open={false}>
     <Close onClick={handleDismiss}><p>dismiss</p></Close>
     <Hours>
-    <h3>Be sure to check our hours prior to ordering!</h3>
+    
     {props.days.map(({ node }, i) => (
       <Day>
       {node.dayOfWeek != null && node.areYouOpen === true &&
@@ -85,6 +119,7 @@ async function handleDismiss(e) {
           </Day>
           ))}
           </Hours>
+          </Collapsible>
           </Alert>
           )
         }
