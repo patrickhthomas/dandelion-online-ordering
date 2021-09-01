@@ -1,6 +1,5 @@
 export { Header } from "./header"
-export { Hero } from "./hero"
 export { Link } from "./link"
 export { Layout } from "./Layout"
-export { SEO } from "./seo"
+export { SEO } from "./SEO"
 export { Tile } from "./tile"

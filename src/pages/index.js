@@ -5,7 +5,7 @@ import { Grid } from "@theme-ui/components"
 import { SEO, Tile } from "../components"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
-import Hero from '../components/Hero'
+import Hero from '../components/hero'
 import Section1 from '../components/Section1'
 import Section2 from '../components/Section2'
 import Events from '../components/Events'
