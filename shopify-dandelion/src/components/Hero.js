@@ -38,28 +38,23 @@ const Blurb = styled.p`
 
 const HeroImg = styled.div`
   z-index: 1;
-  grid-row: 1 / 4; 
+  grid-row: 1 / 5; 
   overflow: hidden;
   display: block;
   position: absolute;
   transform: translateY(-2em);
   img {
    position: relative;
-   min-height: 300px;
-   max-height: 500px;
+   width: 100%;
+   height: auto;
   }
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
       img {
-   position: relative;
-   min-height: 300px;
-   max-height: 700px;
   }
   }
   @media screen and (min-width: ${props => props.theme.responsive.large}) {
       img {
-   position: relative;
-   min-height: 300px;
-   max-height: 850px;
+
   }
   }
 `
