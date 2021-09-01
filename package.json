@@ -25,7 +25,6 @@
     "gatsby-source-filesystem": "^2.1.36",
     "gatsby-source-shopify": "^3.0.41",
     "gatsby-theme-shopify-manager": "^0.1.5",
-    "gatsby-theme-style-guide": "^0.2.49",
     "gatsby-transformer-remark": "2.8.18",
     "gatsby-transformer-sharp": "^2.3.3",
     "lodash": "^4.17.15",

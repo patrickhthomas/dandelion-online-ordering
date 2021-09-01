@@ -61,7 +61,6 @@ module.exports = {
         useNameForId: false,
       }
     },
-    `gatsby-theme-style-guide`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
