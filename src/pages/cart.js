@@ -3,7 +3,7 @@ import React from "react"
 import { jsx } from "theme-ui"
 import Img from "gatsby-image"
 import { Grid, Divider, Button, Card, Text } from "@theme-ui/components"
-import { SEO } from "../components/SEO"
+import SEO from "../components/SEO"
 import { Link } from "gatsby"
 import Layout from "../components/Layout"
 import styled from '@emotion/styled'
