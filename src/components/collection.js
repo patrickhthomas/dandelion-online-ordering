@@ -110,7 +110,7 @@ grid-gap: 3em;
     justify-content: space-between;
     `
     
-    const Collection = props => {
+    const Collection = (props) => {
 
 
         return (
