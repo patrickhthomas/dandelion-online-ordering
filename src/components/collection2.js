@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import { TiPlusOutline } from 'react-icons/ti'
 import { Link } from 'gatsby'
 import Collapsible from 'react-collapsible'
-import Arrow from '../components/Icons/arrow'
-import PdfMenu from '../components/Pdf'
+import Arrow from './Icons/arrow'
+import PdfMenu from './Pdf'
 
 
 const Title = styled.p`

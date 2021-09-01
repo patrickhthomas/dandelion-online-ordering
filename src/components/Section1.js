@@ -99,7 +99,7 @@ p{
 `
 
 
-const Section1 = props =>  {
+const Section1 = (props) =>  {
   const [isInViewport, targetRef] = useIsInViewport({ threshold: .001 })
   return (
     

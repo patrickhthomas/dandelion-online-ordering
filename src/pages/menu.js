@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Collection from '../components/collection'
+import Collection from '../components/Collection'
 import Container from '../components/Container'
 import { SEO } from '../components/SEO'
 import { startCase } from 'lodash'

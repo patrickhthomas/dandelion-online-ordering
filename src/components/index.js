@@ -1,5 +1,0 @@
-export { Header } from "./header"
-export { Link } from "./link"
-export { Layout } from "./Layout"
-export { SEO } from "./SEO"
-export { Tile } from "./tile"

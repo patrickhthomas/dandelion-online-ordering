@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Styled, jsx } from "theme-ui"
 import PropTypes from "prop-types"
-import { Link } from "../components"
+import { Link } from "gatsby"
 import { useCartCount } from "gatsby-theme-shopify-manager"
 
 const Header = ({ siteTitle }) => {
@@ -62,7 +62,7 @@ const Header = ({ siteTitle }) => {
             {siteTitle}
           </Link>
         </Styled.h1>
-        <Link url="/cart" isButton>
+        <Link to="/cart" isButton>
           Cart
           {countMarkup}
         </Link>

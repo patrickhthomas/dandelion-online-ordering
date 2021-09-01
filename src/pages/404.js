@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Layout, SEO } from "../components/"
+import { SEO } from "../components/SEO"
+import { Layout } from "../components/Layout"
 
 const NotFoundPage = () => (
   <Layout>

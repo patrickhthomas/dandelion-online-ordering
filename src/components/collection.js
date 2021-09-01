@@ -2,8 +2,8 @@ import React from 'react'
 
 import styled from '@emotion/styled'
 
-import PdfMenu from '../components/Pdf'
-import Collection2 from './collection2'
+import PdfMenu from './Pdf'
+import Collection2 from './Collection2'
 
 
 const Wrapper = styled.section`

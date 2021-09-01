@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import { Card, Text } from "@theme-ui/components"
-import { Link } from "../components"
+import { Link } from "gatsby"
 
 const Tile = ({ title, slug, price, image }) => {
   const data = useStaticQuery(graphql`
@@ -35,7 +35,7 @@ const Tile = ({ title, slug, price, image }) => {
       </div>
       <Styled.h2 sx={{ mt: 4, mb: 0, fontSize: 3 }}>{title}</Styled.h2>
       <Text sx={{ fontSize: 4, mb: 2 }}>${price.toFixed(2)}</Text>
-      <Link url={`/product/${slug}`} isButton>
+      <Link to={`/product/${slug}`} isButton>
         View
       </Link>
     </Card>

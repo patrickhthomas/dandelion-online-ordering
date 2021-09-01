@@ -74,7 +74,7 @@ p:first-child {
 `
 
 
-const Section1 = props => {
+const Section3 = (props) => {
   const [isInViewport, targetRef] = useIsInViewport({ threshold: .001 })
 return (
 
@@ -95,4 +95,4 @@ return (
   </Wrapper>
 )}
 
-export default Section1
+export default Section3

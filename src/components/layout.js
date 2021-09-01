@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { Global } from '@emotion/core'
 import Menu from './Menu'
 import { globalStyles } from '../styles/globalStyles.js'
-import { Header } from "."
 
 
 const Root = styled.div`

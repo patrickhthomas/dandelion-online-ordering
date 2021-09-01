@@ -1,7 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
-import HeroCTAButton from "../components/Buttons/HeroCTAButton"
+import HeroCTAButton from "./Buttons/HeroCTAButton"
 
 
 const Wrapper = styled.section`
@@ -77,7 +77,7 @@ const Tagline = styled.h3`
   grid-row: 3 / 4;
 `
 
-const Hero = props => (
+const Hero = (props) => (
   <>
   <Wrapper className='overrideInView'>
     <HeroImg><img src={props.image.file.url} alt={props.alt} /></HeroImg>

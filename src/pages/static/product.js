@@ -3,7 +3,8 @@ import { useState } from "react"
 import { Styled, jsx } from "theme-ui"
 import Img from "gatsby-image"
 import { Grid, Select, Label, Button } from "@theme-ui/components"
-import { Layout, SEO } from "../../components"
+import { Layout } from "../../components/Layout"
+import { SEO } from "../../components/SEO"
 import { useStaticQuery, graphql } from "gatsby"
 
 const ProductPage = () => {

@@ -25,7 +25,7 @@ invisibleGrid {
   }
 `
 
-const Container = props => {
+const Container = (props) => {
   return <Wrapper>{props.children}</Wrapper>
 }
 

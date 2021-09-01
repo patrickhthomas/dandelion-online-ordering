@@ -1,20 +1,15 @@
-/** @jsx jsx */
+
 import React from 'react'
-import { jsx } from "theme-ui"
-import { Grid } from "@theme-ui/components"
-import { SEO, Tile } from "../components"
+import SEO from '../components/SEO'
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
-import Hero from '../components/hero'
+import Hero from '../components/Hero'
 import Section1 from '../components/Section1'
 import Section2 from '../components/Section2'
-import Events from '../components/Events'
 import Section3 from '../components/Section3'
 import ContactCard from '../components/ContactCard'
 import Container from '../components/Container'
-import { startCase } from 'lodash'
 import Footer from '../components/Footer'
-import { Link } from 'gatsby'
 import { DateTime } from '../components/DateAndTime'
 
 const IndexPage = ({ data, pageContext }) => {

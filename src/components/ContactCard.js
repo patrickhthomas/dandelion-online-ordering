@@ -53,7 +53,7 @@ a{
 
 `
 
-const ContactCard = props => {
+const ContactCard = (props) => {
   const [isInViewport, targetRef] = useIsInViewport({ threshold: .001})
   return (
     

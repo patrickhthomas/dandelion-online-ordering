@@ -4,7 +4,7 @@ import { Styled, jsx } from "theme-ui"
 import styled from '@emotion/styled'
 import Img from "gatsby-image"
 import { Grid, Button, Alert, Close } from "@theme-ui/components"
-import { SEO } from "../components"
+import { SEO } from "../components/SEO"
 import Layout from "../components/Layout"
 import { Link } from "gatsby"
 import { Thumbnail, OptionPicker } from "./components"
