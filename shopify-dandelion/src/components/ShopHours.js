@@ -52,8 +52,9 @@ const Alert = styled.div`
 display: ${newClassName};
 grid-template-areas: 'a';
 padding: 2em;
-background-color: ${props => props.theme.colors.accent002};
+background-color: ${props => props.theme.colors.primary};
 width: 100%;
+max-width: 24em;
 margin-bottom: 2em;
 border-radius: 1em;
 h3 {
@@ -101,7 +102,6 @@ contentInnerClassName='inner'
                     triggerClassName='trigger'
                     triggerOpenedClassName='triggerOpened'
                     open={false}>
-    <Close onClick={handleDismiss}><p>dismiss</p></Close>
     <Hours>
     
     {props.days.map(({ node }, i) => (

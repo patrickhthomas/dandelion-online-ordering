@@ -32,7 +32,7 @@ justify-content: start;
 }
 .child {
     background: ${props => props.theme.gradients.rainbowFade};
-    opacity: .85;
+    opacity: 1;
     background-position: 90vw 100vw;
     width: 100%;
     border-radius: 1em;
@@ -114,7 +114,7 @@ justify-content: start;
                     triggerOpenedClassName='triggerOpened'
                     open={newTitle ==='Monthly Specials' ? true : false}
                     >
-                    <Product>
+                    <Product className="parent">
                     {props.category.map(({ title, handle, images, productType, i }) => 
                     
                     productType === newTitle ?

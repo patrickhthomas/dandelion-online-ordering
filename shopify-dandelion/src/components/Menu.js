@@ -7,7 +7,7 @@ import MenuButton from './Icons/openMenu'
 import { Styled, jsx } from "theme-ui"
 import PropTypes from "prop-types"
 import { useCartCount } from "gatsby-theme-shopify-manager"
-import CustomButtonNoHover from './CustomButtonNoHover'
+import CustomButtonNoHover from './Buttons/CustomButtonNoHover'
 
 
 

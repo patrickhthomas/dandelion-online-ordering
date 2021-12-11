@@ -118,7 +118,6 @@ grid-gap: 3em;
         <Wrapper>
         <Top>
         <h1>Menu</h1>
-        <PdfMenu/>
         </Top>
         
         <SubSection1>

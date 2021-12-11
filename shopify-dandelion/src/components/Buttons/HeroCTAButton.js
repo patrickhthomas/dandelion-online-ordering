@@ -5,9 +5,9 @@ import { Link } from 'gatsby'
 
 const Button = styled.button`
 width: 100%;
-background-color: ${props => props.theme.colors.yellow};
+background-color: ${props => props.theme.colors.primary};
 padding: 1em;
-color: ${props => props.theme.colors.black};
+color: ${props => props.theme.colors.background};
 transition: all .2s ease-in;
 box-shadow: 0px 0px 14px 5px rgba(113, 54, 186, 0.6);
 max-width: 12em;

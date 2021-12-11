@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import styled from "@emotion/styled"
-import CustomButton from './CustomButton'
+import CustomButton from './Buttons/CustomButton'
 
 
 const Next = styled.div`

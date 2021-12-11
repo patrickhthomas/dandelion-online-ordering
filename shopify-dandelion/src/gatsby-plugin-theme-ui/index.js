@@ -20,7 +20,7 @@ export default {
   },
   gradients: {
     primary: 'linear-gradient(140.98deg, rgba(113, 54, 186, 0.5) 17.15%, rgba(14, 7, 24, 0.5) 59.18%, rgba(110, 38, 255, 0.5) 117.37%), radial-gradient(106.5% 85.16% at 73.56% 25.55%, rgba(113, 54, 186, 0.5) 6.86%, rgba(48, 23, 79, 0.5) 58.17%, rgba(14, 7, 24, 0.5) 96.14%)',
-    rainbow: 'linear-gradient(90deg, #B91E23 0%, #B91E23 1%, #E48D31 1%, #EB9F34 2%, #FFD13A 2%, #FFD13A 3%, #2F9E44 3%, #2F9E44 4%, #002A73 4%, #002A73 5%, #30264E 5%, #30264E 101.63%)',
+    rainbow: 'linear-gradient(90deg, #7136BA 0%, #7136BA 1%, #67557C 1%, #67557C 2%, #7136BA 2%, #7136BA 3%, #67557C 3%, #67557C 4%, #7136BA 4%, #7136BA 5%, #30264E 5%, #30264E 101.63%)',
     rainbowFade: 'linear-gradient(90deg, #B91E23 0%, #B91E23 1%, #E48D31 1%, #EB9F34 2%, #FFD13A 2%, #FFD13A 3%, #2F9E44 3%, #2F9E44 4%, #002A73 4%, #002A73 5%, #30264E 5%, #30264E 101.63%)'
   },
   blend: {

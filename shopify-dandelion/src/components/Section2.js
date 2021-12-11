@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from "gatsby"
 import useIsInViewport from 'use-is-in-viewport'
-import CustomButton from './CustomButton'
+import CustomButton from './Buttons/CustomButton'
 
 
 
@@ -146,6 +146,12 @@ div {
     }
   }
 `
+
+const ButtonWrapper = styled.div`
+margin: auto;
+padding-top: 1em;
+
+`
 const target = '_blank';
 const rel = 'noopener' + ' ' + 'noreferrer';
 
@@ -168,6 +174,13 @@ return (
         </Product> 
       ))}
       </Products>
+      <ButtonWrapper>
+      <Link to={'/menu'}>
+      <CustomButton
+      label="Order Teas & Treats Online">
+      </CustomButton>
+      </Link>
+      </ButtonWrapper>
     </SubSection1>
     <SubSection2>
       <h3>{props.subSection2Title}</h3>
@@ -184,11 +197,13 @@ return (
         <a target={target} rel={rel} href="https://www.giftsfromtheearth.com/dandelion-teahouse-apothecary/">Our sister site has even more body care products, check them out!&gt;</a>
         
       </p>
+      <ButtonWrapper>
       <Link to={'/menu'}>
       <CustomButton
-      label="Order online for in store pick up">
+      label="Order Apothecary Goods Online">
       </CustomButton>
       </Link>
+      </ButtonWrapper>
     </SubSection2>
 
   </Wrapper>

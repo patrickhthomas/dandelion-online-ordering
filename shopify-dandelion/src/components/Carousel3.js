@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from "@emotion/styled"
 import { Link } from 'gatsby'
 import GalleryPhotos from './GalleryPhotos'
-import CustomButton from './CustomButton'
+import CustomButton from './Buttons/CustomButton'
 
 const Description = styled.p`
 width: 100%;

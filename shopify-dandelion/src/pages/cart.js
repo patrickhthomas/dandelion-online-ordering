@@ -10,8 +10,8 @@ import styled from '@emotion/styled'
 import { useStaticQuery, graphql } from "gatsby"
 import Footer from '../components/Footer'
 import useIsInViewport from 'use-is-in-viewport'
-import CustomButton from "../components/CustomButtonNoLink"
-import CustomButton2 from "../components/CustomButton"
+import CustomButton from "../components/Buttons/CustomButtonNoLink"
+import CustomButton2 from "../components/Buttons/CustomButton"
 
 import {
   useAddItemToCart,

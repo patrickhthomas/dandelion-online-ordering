@@ -5,14 +5,14 @@ import { Link } from 'gatsby'
 
 const Button = styled.button`
 width: 100%;
-background-color: ${props => props.theme.colors.accent001};
+background-color: ${props => props.theme.colors.primary};
 
-color: ${props => props.theme.colors.black};
+color: ${props => props.theme.colors.background};
 transition: all .2s ease-in;
 box-shadow: 0px 0px 10px rgba(113, 54, 186, 0.2);
-max-width: 12em;
-height: 3em;
-align-self: end;
+
+padding: 1em;
+text-align: center;
 border-radius: .5em;
 font-family: ${props => props.theme.fonts.header};
 &:hover {

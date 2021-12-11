@@ -92,7 +92,6 @@ const heroImageV2 = data.contentfulHeroImage.image
         id="card"
         info={data.contentfulContact}/>
         <Footer />
-        <DateTime></DateTime>
       </Container>
     </Layout>
   )

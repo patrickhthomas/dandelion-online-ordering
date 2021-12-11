@@ -12,9 +12,9 @@ invisibleGrid {
   width: 100%;
   max-width: ${props => props.theme.sizes.maxWidth};
   flex-grow: 1;
-  padding-top: 3em;
+  padding-top: 1em;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
-    padding: 3em 1.5em 2em;
+    padding: 1em 1.5em 2em;
   }
   .sectionH2 {
      border-bottom: 0px solid ${props => props.theme.colors.tertiary};

@@ -21,14 +21,39 @@ const Wrapper = styled.section`
 
 }
 h1, h2, h3 {
-    background-color: ${props => props.theme.colors.white50};
-    backdrop-filter: blur(5px);
+color: white;
 }
 `
-const Title = styled.h1`
-  z-index: 1;
-  width: auto;
+
+const WrapperP = styled.section`
+
+  display: grid;
+  position: absolute;
+  top: 4.2em;
+  grid-gap: .5em;
+  overflow: hidden;
+  align-content: start;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto);
+.heroCTA {
+  place-self: center;
+  z-index: 9;
+  margin-bottom: 2em;
+  margin-top: 2em;
+
+}
+h1, h2, h3 {
+color: ${props => props.theme.colors.primary};
+transform: translateX(-.1em);
+opacity: .6;
+}
+
+    @media (min-width: ${props => props.theme.responsive.medium}) {
+        
+        top: 5.5em;
+    }
 `
+
 
 const Blurb = styled.p`
   z-index: 2;
@@ -59,15 +84,32 @@ const HeroImg = styled.div`
   }
 `
 
-
+const Title = styled.h1`
+  z-index: 2;
+  width: auto;
+`
 
 const Subtitle = styled.h2`
-  z-index: 1;
-
+  z-index: 2;
   grid-row: 2 / 3;
   border-bottom: 0px;
 `
 const Tagline = styled.h3`
+  z-index: 2;
+  grid-row: 3 / 4;
+`
+
+const TitleP = styled.h1`
+  z-index: 1;
+  width: auto;
+`
+
+const SubtitleP = styled.h2`
+  z-index: 1;
+  grid-row: 2 / 3;
+  border-bottom: 0px;
+`
+const TaglineP = styled.h3`
   z-index: 1;
   grid-row: 3 / 4;
 `
@@ -79,8 +121,15 @@ const Hero = (props) => (
     <Title>{props.title}</Title>
     <Subtitle>{props.subtitle}</Subtitle>
     <Tagline>{props.tagline}</Tagline>
+
+
     <HeroCTAButton url='/menu'className='heroCTA' label='Place an order online!' />
   </Wrapper>
+  <WrapperP>
+    <TitleP>{props.title}</TitleP>
+    <SubtitleP>{props.subtitle}</SubtitleP>
+    <TaglineP>{props.tagline}</TaglineP>
+  </WrapperP>
   <Blurb>{props.blurb}</Blurb>
   </>
 )
