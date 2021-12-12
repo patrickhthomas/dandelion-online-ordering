@@ -10,7 +10,7 @@ padding-right: 1em;
 
 const fbIcon = () => {
   return (
-    <FbContainer src={fbSrc}/>
+    <FbContainer src={fbSrc} alt="Facebook Icon, links to Dandelion's Facebook page"/>
   )
 }
 

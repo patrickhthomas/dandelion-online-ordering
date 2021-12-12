@@ -93,7 +93,11 @@ padding: 1.5em 0;
 const SmallContainer = styled.div`
 position: static;
 z-index: 1000;
+.visually-hidden {
+
+}
 .trigger {
+
   display: flex;
   justify-content: end;
   .menuIcon {  
@@ -159,7 +163,8 @@ const Menu = () => {
   return (
     <>
     <SmallContainer>
-    <Collapsible trigger={bars} 
+    <Collapsible 
+    trigger={bars} 
     open={false}
     className='small'
     openedClassName='small'

@@ -170,16 +170,15 @@ return (
       <Products>
       {props.teahouseProduct.map(({ productImage, productName, slug }) => (
         <Product>
-          <img src={productImage.fixed.srcWebp}/>
+          <img src={productImage.fixed.srcWebp} alt={productImage.description}/>
         </Product> 
       ))}
       </Products>
       <ButtonWrapper>
-      <Link to={'/menu'}>
       <CustomButton
+      url={'/menu'}
       label="Order Teas & Treats Online">
       </CustomButton>
-      </Link>
       </ButtonWrapper>
     </SubSection1>
     <SubSection2>
@@ -188,7 +187,7 @@ return (
       <Products>
       {props.apothecaryProduct.map(({ productImage, productName }) => (
         <Product>
-          <img src={productImage.file.url}/>
+          <img src={productImage.file.url} alt={productImage.description}/>
 
         </Product>
       ))}
@@ -198,11 +197,12 @@ return (
         
       </p>
       <ButtonWrapper>
-      <Link to={'/menu'}>
+
       <CustomButton
+      url={'/menu'}
       label="Order Apothecary Goods Online">
       </CustomButton>
-      </Link>
+
       </ButtonWrapper>
     </SubSection2>
 

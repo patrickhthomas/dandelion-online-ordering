@@ -10,7 +10,7 @@ padding-right: 1em;
 
 const igIcon = () => {
   return (
-    <IgContainer src={igSrc}/>
+    <IgContainer src={igSrc} alt="Instagram Icon, links to Dandelion's Instagram page"/>
   )
 }
 

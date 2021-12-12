@@ -21,7 +21,7 @@ display: none;
 const MenuButton = () => {
   return (
     <MenuIcon className="menuIcon">
-    <img src={openMenu}/>
+    <img src={openMenu} alt="Menu Icon, click to expand the navigation menu"/>
     </MenuIcon>
   )
 }

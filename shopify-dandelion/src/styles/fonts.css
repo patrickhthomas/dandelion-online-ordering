@@ -1,24 +1,29 @@
 @font-face {
     font-family: "Sonder-Sans";
     src: url("../fonts/SonderSans-Rough.woff2");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Sonder-Sans-Bold";
     src: url("../fonts/SonderSans-BoldRough.woff2");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Sonder-Sans-Black";
     src: url("../fonts/SonderSans-BlackRough.woff2");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Quicksand";
     src: url("../fonts/Quicksand-Regular.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Quicksand-Bold";
     src: url("../fonts/Quicksand-Bold.ttf");
+    font-display: swap;
 }

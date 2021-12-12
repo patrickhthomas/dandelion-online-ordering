@@ -115,7 +115,7 @@ const Section1 = (props) =>  {
     <Address>{props.address}<br></br>{props.city}</Address><p className="mapsLink">open with google maps &gt;</p>
     </a>
     
-    <Map><img src={props.map.file.url}/></Map>
+    <Map><img src={props.map.file.url} alt="map depicting the location of Dandelion Teahouse & Apothecary, at the corner of 7th street and Washington in Vancouver WA"/></Map>
     </div>
     <div className='hours'>
     <Clock className='clock'/>
