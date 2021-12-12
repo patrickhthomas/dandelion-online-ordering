@@ -136,7 +136,7 @@ section {
 }
 
 .overrideInView{
-  background-color: white;
+  background: ${props => props.theme.gradients.primary};
 }
 `
 

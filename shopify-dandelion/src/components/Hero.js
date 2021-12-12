@@ -4,85 +4,110 @@ import styled from '@emotion/styled'
 import HeroCTAButton from "./Buttons/HeroCTAButton"
 
 
-const Wrapper = styled.section`
-
-  display: grid;
-  position: relative;
-  grid-gap: .5em;
+const Wrapper = styled.div`
+  display: flex;
+  flex: 1;
+  max-width: ${props => props.theme.sizes.maxWidth};
+  flex-flow: column wrap;
   overflow: hidden;
-  align-content: start;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
-.heroCTA {
-  place-self: center;
-  z-index: 10;
-  margin-bottom: 2em;
-  margin-top: 2em;
-
-}
+  margin-top: 1em;
 h1, h2, h3 {
 color: white;
 }
+
+@media screen and (min-width: ${props => props.theme.responsive.medium}) {
+   margin-left: 1em;
+   margin-right: 1em;
+  }
+   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+
+   flex: 2;
+  }
+
 `
 
-const WrapperP = styled.section`
-
+const WrapperP = styled.div`
   display: grid;
-  position: absolute;
-  top: 4.2em;
-  grid-gap: .5em;
+  position: relative;
+  grid-template-area: 
+  'a a a'
+  'a a a'
+  'a a a';
   overflow: hidden;
-  align-content: start;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
+  height: 20em;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: em;
 .heroCTA {
+  grid-area: a;
   place-self: center;
-  z-index: 9;
+  z-index: 10;
+
+
+}
+
+ @media screen and (min-width: ${props => props.theme.responsive.small}) {
+   height: auto;
+   flex: 1;
+  }
+
+   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+   height: auto;
+   flex: 1;
+  }
+
+
+`
+
+const Outer = styled.div`
+width: 100%;
+display: flex;
+flex-flow: column wrap;
+ @media screen and (min-width: ${props => props.theme.responsive.small}) {
+   flex-flow: row wrap;
+   border-radius: 2em;
+overflow: hidden;
+  }
   margin-bottom: 2em;
-  margin-top: 2em;
 
-}
-h1, h2, h3 {
-color: ${props => props.theme.colors.primary};
-transform: translateX(-.1em);
-opacity: .6;
-}
-
-    @media (min-width: ${props => props.theme.responsive.medium}) {
-        
-        top: 5.5em;
-    }
 `
 
 
 const Blurb = styled.p`
   z-index: 2;
   margin-top: 1em;
-  margin-bottom: 2em;
+
 `
 
 const HeroImg = styled.div`
   z-index: 1;
-  grid-row: 1 / 5; 
-  overflow: hidden;
   display: block;
-  position: absolute;
-  transform: translateY(-2em);
+  position: relative;
+  grid-area: a;
+  overflow: hidden;
   img {
-   position: relative;
-   width: 100%;
-   height: auto;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    
   }
-  @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      img {
+ @media screen and (min-width: ${props => props.theme.responsive.small}) {
+   max-height: 500px;
+   img {
+width: 180%;
+   }
   }
+ @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+   img {
+width: 100%;
+max-width: 500px;
+   }
   }
-  @media screen and (min-width: ${props => props.theme.responsive.large}) {
-      img {
-
-  }
+ @media screen and (min-width: ${props => props.theme.responsive.medium}) {
+max-height: 500px;
   }
 `
+
 
 const Title = styled.h1`
   z-index: 2;
@@ -91,47 +116,28 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   z-index: 2;
-  grid-row: 2 / 3;
   border-bottom: 0px;
 `
 const Tagline = styled.h3`
   z-index: 2;
-  grid-row: 3 / 4;
 `
 
-const TitleP = styled.h1`
-  z-index: 1;
-  width: auto;
-`
-
-const SubtitleP = styled.h2`
-  z-index: 1;
-  grid-row: 2 / 3;
-  border-bottom: 0px;
-`
-const TaglineP = styled.h3`
-  z-index: 1;
-  grid-row: 3 / 4;
-`
 
 const Hero = (props) => (
-  <>
-  <Wrapper className='overrideInView'>
-    <HeroImg><img src={props.image.file.url} alt={props.alt} /></HeroImg>
+  <Outer className='overrideInView'>
+  <Wrapper>
     <Title>{props.title}</Title>
     <Subtitle>{props.subtitle}</Subtitle>
     <Tagline>{props.tagline}</Tagline>
-
-
-    <HeroCTAButton url='/menu'className='heroCTA' label='Place an order online!' />
-  </Wrapper>
+    <Blurb>{props.blurb}</Blurb>
+    </Wrapper>
   <WrapperP>
-    <TitleP>{props.title}</TitleP>
-    <SubtitleP>{props.subtitle}</SubtitleP>
-    <TaglineP>{props.tagline}</TaglineP>
+    <HeroCTAButton url='/menu'className='heroCTA' label='Place an order online!' />
+    <HeroImg><img src={props.image.file.url} alt={props.alt} /></HeroImg>
+    
   </WrapperP>
-  <Blurb>{props.blurb}</Blurb>
-  </>
+  
+  </Outer>
 )
 
 export default Hero

@@ -11,7 +11,6 @@ color: ${props => props.theme.colors.background};
 transition: all .2s ease-in;
 box-shadow: 0px 0px 14px 5px rgba(113, 54, 186, 0.6);
 max-width: 12em;
-align-self: end;
 border-radius: .5em;
 font-family: ${props => props.theme.fonts.header};
 &:hover {
