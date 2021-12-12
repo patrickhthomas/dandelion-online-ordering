@@ -76,7 +76,9 @@ overflow: hidden;
 const Blurb = styled.p`
   z-index: 2;
   margin-top: 1em;
-
+margin-bottom: 2em;
+color: white;
+font-weight: 1000;
 `
 
 const HeroImg = styled.div`
