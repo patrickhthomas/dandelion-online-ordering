@@ -2,13 +2,14 @@ require("dotenv").config({
   path: `.env`,
 })
 
+
 module.exports = {
   siteMetadata: {
     author: `@gatsbyjs`,
-          title: "Dandelion",
+    title: "Dandelion",
     description:
-      'Dandelion, a community teahouse and apothecary in Vancouver Washington',
-    siteUrl: 'https://www.dandelionteahouse.com',
+    'Dandelion, a community teahouse and apothecary in Vancouver Washington',
+    siteUrl: 'https://www.dandelionteahouse.com/',
     image: '/images/share.jpg',
     menuLinks: [
       {
@@ -34,7 +35,7 @@ module.exports = {
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
-          'UA-201824869-1', // Google Analytics / GA
+          'G-B7NDNGM17E', // Google Analytics / GA
           // optional
           'OPTIONAL----AW-CONVERSION_ID', // Google Ads / Adwords / AW
           'OPTIONAL----DC-FLOODIGHT_ID', // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
@@ -63,7 +64,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
+      }
     },
     {
       // This plugin lets me access environment variables that
