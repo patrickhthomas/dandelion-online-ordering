@@ -50,7 +50,7 @@ module.exports = {
       resolve: `gatsby-theme-shopify-manager`,
       options: {
         shopName: 'dandelion-teahouse-apothecary',
-        accessToken: '26c1a884eff63794fb2c1cdd922bf299'
+        accessToken: process.env.SHOP_TOKEN
       },
     },
     {
